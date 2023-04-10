@@ -35,6 +35,10 @@
 
  
     }
+    .imgGoogle{
+        width: 10%;
+        height: auto;  
+    }
     .sectionDatos ::placeholder{
         font-size: 2vh;
         color: black;

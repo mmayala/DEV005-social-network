@@ -13,27 +13,51 @@ function login() {
   const email = document.createElement('input');
   const password = document.createElement('input');
   const btnLogin = document.createElement('button');
-  const btnFacebook = document.createElement('img');
-  const btnGoogle = document.createElement('img');
-  const btnRegister = document.createElement('button');
-  const formLogin=document.createElement('form');
+  const imgGoogle = document.createElement('img');
+  const btnGoogle = document.createElement('button');
+  const formLogin = document.createElement('form');
+  const labelEmail=document.createElement('label');
+  const labelPass=document.createElement('label');
+  const register=document.createElement('p');
+  const registerLink=document.createElement('a');
+  const o=document.createElement('p');
+
+  labelEmail.textContent='Correo electrónico';
+
   email.placeholder = 'Correo electrónico';
+  email.type = 'email';
+  email.id = 'signin_email';
+
+  labelPass.textContent='Contraseña';
+
   password.placeholder = 'Contraseña';
-  btnLogin.textContent = 'INICIAR SESIÓN';
-  btnRegister.textContent = 'REGISTRARSE';
-  btnFacebook.src ='/img/logo_facebook.png';
-  btnGoogle.src ='/img/logo_google.png';
-  btnFacebook.className ='btnRed';
-  btnGoogle.className ='btnRed';
   password.type='password';
-  email.type='email';
-  btnLogin.type='submit';
-  email.id='signin_email';
   password.id='signin_password';
+
+  btnLogin.textContent = 'INICIAR SESIÓN';
+  btnLogin.type='submit';
+
+  register.textContent='¿Todavía no tienes una cuenta?';
+  registerLink.innerHTML='Registrate aquí';
+  registerLink.href='#';
+ 
+  register.appendChild(registerLink);
+
+  o.textContent='o';
+
+  
+  imgGoogle.src ='/img/logo_google.png';
+  btnGoogle.textContent = 'CONTINÚA CON GOOGLE';
+  imgGoogle.className ='imgGoogle';
+  btnGoogle.appendChild(imgGoogle);
+
+  
+  
+
   formLogin.id='signin_form';
   sectionLogo.className='sectionLogo';
   sectionDatos.className='sectionDatos';
-  formLogin.append(email, password, btnLogin, btnFacebook, btnGoogle, btnRegister);
+  formLogin.append(labelEmail, email, labelPass, password, btnLogin, register, o, btnGoogle);
   sectionDatos.append(formLogin);
   divLogin.append(sectionLogo, sectionDatos);
   return divLogin;
