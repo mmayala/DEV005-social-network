@@ -1,6 +1,10 @@
 function login() {
   const divLogin = document.createElement('div');
 
+  const backgroundImg = document.createElement('img');
+  backgroundImg.src = '/img/fondo_desktop.png';
+  backgroundImg.id = 'backgroundImg';
+
   const sectionLogo = document.createElement('section');
   sectionLogo.className = 'sectionLogo';
   const logo = document.createElement('img');
@@ -63,7 +67,7 @@ function login() {
   );
 
   sectionDatos.append(formLogin);
-  divLogin.append(sectionLogo, sectionDatos);
+  divLogin.append(backgroundImg, sectionLogo, sectionDatos);
   return divLogin;
 }
 
