@@ -1,4 +1,6 @@
-@media only screen and (min-width: 360px){
+
+
+/*@media only screen and (min-width: 360px){
     body{
         background-image:url(/img/fondo_mobile.png);
     }
@@ -35,10 +37,6 @@
 
  
     }
-    .imgGoogle{
-        width: 10%;
-        height: auto;  
-    }
     .sectionDatos ::placeholder{
         font-size: 2vh;
         color: black;
@@ -53,3 +51,4 @@
         height: auto;
     }
 }
+*/
