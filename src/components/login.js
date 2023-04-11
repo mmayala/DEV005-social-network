@@ -1,68 +1,74 @@
 function login() {
-  const divLogin=document.createElement('div');
+  const divLogin = document.createElement('div');
+
+  const backgroundImg = document.createElement('img');
+  backgroundImg.src = '/img/fondo_desktop.png';
+  backgroundImg.id = 'backgroundImg';
+
   const sectionLogo = document.createElement('section');
+  sectionLogo.className = 'sectionLogo';
   const logo = document.createElement('img');
-  const textWelcome = document.createElement('h3');
   logo.className = 'logoMobile';
   logo.src = '/img/logo.png';
-
+  const textWelcome = document.createElement('h3');
   textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
   const sectionDatos = document.createElement('section');
-  const email = document.createElement('input');
-  const password = document.createElement('input');
-  const btnLogin = document.createElement('button');
-  const imgGoogle = document.createElement('img');
-  const btnGoogle = document.createElement('button');
+  sectionDatos.className = 'sectionDatos';
   const formLogin = document.createElement('form');
-  const labelEmail=document.createElement('label');
-  const labelPass=document.createElement('label');
-  const register=document.createElement('p');
-  const registerLink=document.createElement('a');
-  const o=document.createElement('p');
+  formLogin.id = 'signin_form';
 
-  labelEmail.textContent='Correo electrónico';
-
-  email.placeholder = 'Correo electrónico';
+  const labelEmail = document.createElement('label');
+  labelEmail.textContent = 'Correo electrónico';
+  const email = document.createElement('input');
+  email.placeholder = 'ejemplo@ejemplo.com';
   email.type = 'email';
   email.id = 'signin_email';
 
-  labelPass.textContent='Contraseña';
+  const labelPass = document.createElement('label');
+  labelPass.textContent = 'Contraseña';
+  const password = document.createElement('input');
+  password.placeholder = '***************';
+  password.type = 'password';
+  password.id = 'signin_password';
 
-  password.placeholder = 'Contraseña';
-  password.type='password';
-  password.id='signin_password';
-
+  const btnLogin = document.createElement('button');
   btnLogin.textContent = 'INICIAR SESIÓN';
-  btnLogin.type='submit';
+  btnLogin.type = 'submit';
 
-  register.textContent='¿Todavía no tienes una cuenta?';
-  registerLink.innerHTML='Registrate aquí';
-  registerLink.href='#';
- 
+  const register = document.createElement('p');
+  register.textContent = '¿Todavía no tienes una cuenta?   ';
+  const registerLink = document.createElement('a');
+  registerLink.innerHTML = 'Registrate aquí';
+  registerLink.href = '#';
   register.appendChild(registerLink);
 
-  o.textContent='o';
+  const o = document.createElement('p');
+  o.textContent = 'o';
 
-  
-  imgGoogle.src ='/img/logo_google.png';
+  const imgGoogle = document.createElement('img');
+  imgGoogle.src = '/img/logo_google.png';
+  imgGoogle.className = 'imgGoogle';
+  const btnGoogle = document.createElement('button');
   btnGoogle.textContent = 'CONTINÚA CON GOOGLE';
-  imgGoogle.className ='imgGoogle';
+  btnGoogle.className = 'btnGoogle';
   btnGoogle.appendChild(imgGoogle);
 
-  
-  
+  formLogin.append(
+    labelEmail,
+    email,
+    labelPass,
+    password,
+    btnLogin,
+    register,
+    o,
+    btnGoogle,
+  );
 
-  formLogin.id='signin_form';
-  sectionLogo.className='sectionLogo';
-  sectionDatos.className='sectionDatos';
-  formLogin.append(labelEmail, email, labelPass, password, btnLogin, register, o, btnGoogle);
   sectionDatos.append(formLogin);
-  divLogin.append(sectionLogo, sectionDatos);
+  divLogin.append(backgroundImg, sectionLogo, sectionDatos);
   return divLogin;
 }
 
-
 export default login;
-
