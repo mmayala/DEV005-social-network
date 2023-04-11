@@ -1,4 +1,8 @@
 function login() {
+  const backgroundImage = document.createElement('img');
+  backgroundImage.src = './img/fondo_desktop.png';
+  backgroundImage.id = 'backgroundImage';
+
   const divLogin = document.createElement('div');
 
   const sectionLogo = document.createElement('section');
@@ -63,7 +67,7 @@ function login() {
   );
 
   sectionDatos.append(formLogin);
-  divLogin.append(sectionLogo, sectionDatos);
+  divLogin.append(backgroundImage, sectionLogo, sectionDatos);
   return divLogin;
 }
 
