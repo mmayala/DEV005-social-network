@@ -1,4 +1,88 @@
 @media only screen and (min-width: 420px){
+* {
+  margin: 0px;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  color: white;
+  background-image: url(/img/fondo_desktop.png);
+}
+
+div {
+  display: flex;
+}
+
+.sectionLogo {
+  width: 50%;
+  text-align: center;
+  margin: 150px;
+}
+
+.logoMobile {
+  width: 400px;
+  height: auto;
+}
+
+h3 {
+  font-size: 30px;
+  margin: 20px;
+}
+
+.sectionDatos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 200px;
+}
+
+#signin_email, #signin_password {
+    color: darkgrey;
+    width: 550px;
+    height: 35px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+button{
+    width: 565px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 50px;
+    background-color: #29193E;
+    color: white;
+    font-weight: bold;
+    box-shadow: 5px 5px rgba(41,25,62,0.2);
+}
+
+p {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+a{
+    color: white;
+
+}
+
+.btnGoogle {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0px 150px;
+    background-color: white;
+    color: rgb(41, 25, 62);
+    font-weight: bold;
+}
+
+.imgGoogle{
+    width: 20px;
+}
+/*@media only screen and (min-width: 360px){
     body{
         background-image:url(/img/fondo_mobile.png);
     }
@@ -52,4 +136,4 @@
         width: 10%;
         height: auto;
     }
-}
+}*/

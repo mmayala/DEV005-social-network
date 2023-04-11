@@ -6,7 +6,7 @@ import login from './components/login.js';
 //import { signin } from './components/signin.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-const root = document.getElementById("root");
+const root = document.getElementById('root');
 root.append(login());
 
 function signin() {

@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-//import { async } from 'regenerator-runtime';
+/*import { createUserWithEmailAndPassword } from "firebase/auth";
+import { async } from 'regenerator-runtime';
 import { auth } from "./firebase.js";
 
 export function signin() {
@@ -23,4 +23,4 @@ export function signin() {
       console.log(error);
     }
   });
-}
+}*/
