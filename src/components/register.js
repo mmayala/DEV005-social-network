@@ -14,8 +14,6 @@ function register() {
   textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
-  
-
   divLogin.append(backgroundImg, sectionLogo);
   return divLogin;
 }
