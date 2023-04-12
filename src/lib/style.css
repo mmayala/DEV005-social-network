@@ -45,7 +45,11 @@ h3 {
 }
 
 #signin_email,
-#signin_password {
+#signin_password,
+#register_name,
+#register_email,
+#register_password,
+#register_confirm {
   color: darkgrey;
   width: 35em;
   height: 2em;
@@ -126,10 +130,6 @@ a {
         margin: 5%;
 
  
-    }
-    .imgGoogle{
-        width: 10%;
-        height: auto;  
     }
     .sectionDatos ::placeholder{
         font-size: 2vh;
