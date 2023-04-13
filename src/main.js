@@ -37,6 +37,13 @@ function navigateTo(hash) {
 
 navigateTo(window.location.pathname);
 
+const gotoRegister = document.querySelector('a');
+gotoRegister.addEventListener('click', ( ) {
+navigateTo(window.location.register);
+
+});
+
+
 function signin() {
   const signinForm = document.querySelector('#signin_form');
   // console.log(signinForm);
@@ -72,6 +79,7 @@ function signin() {
 }
 
 signin();
+
 
 myFunction();
 
