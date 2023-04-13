@@ -84,10 +84,13 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0em 8em;
   background-color: white;
   color: rgb(41, 25, 62);
   font-weight: bold;
+  border-radius: 15px;
+  width: 28em;
+  height: 3em;
+  border: none;
 }
 
 .imgGoogle {

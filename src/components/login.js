@@ -47,13 +47,18 @@ function login() {
   const o = document.createElement('p');
   o.textContent = 'o';
 
+  
+  const btnGoogle = document.createElement('div');
+  btnGoogle.className = 'btnGoogle';
   const imgGoogle = document.createElement('img');
   imgGoogle.src = '/img/logo_google.png';
   imgGoogle.className = 'imgGoogle';
-  const btnGoogle = document.createElement('button');
-  btnGoogle.textContent = 'CONTINÚA CON GOOGLE';
-  btnGoogle.className = 'btnGoogle';
-  btnGoogle.appendChild(imgGoogle);
+  const txtGoogle = document.createElement('span');
+  txtGoogle.innerHTML = 'CONTINÚA CON GOOGLE';
+
+  
+
+  btnGoogle.append(imgGoogle, txtGoogle);
 
   formLogin.append(
     labelEmail,
