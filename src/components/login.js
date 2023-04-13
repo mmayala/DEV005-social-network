@@ -64,6 +64,7 @@ function login() {
     register,
     o,
     btnGoogle,
+
   );
 
   sectionDatos.append(formLogin);
