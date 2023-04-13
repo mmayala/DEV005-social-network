@@ -1,9 +1,6 @@
-function login() {
+function login(navigateTo) {
   const divLogin = document.createElement('div');
-
-  const backgroundImg = document.createElement('img');
-  backgroundImg.src = '/img/fondo_desktop.png';
-  backgroundImg.id = 'backgroundImg';
+  divLogin.id='loginContainer';
 
   const sectionLogo = document.createElement('section');
   sectionLogo.className = 'sectionLogo';
@@ -56,8 +53,6 @@ function login() {
   const txtGoogle = document.createElement('span');
   txtGoogle.innerHTML = 'CONTINÚA CON GOOGLE';
 
-  
-
   btnGoogle.append(imgGoogle, txtGoogle);
 
   formLogin.append(
@@ -73,7 +68,13 @@ function login() {
   );
 
   sectionDatos.append(formLogin);
-  divLogin.append(backgroundImg, sectionLogo, sectionDatos);
+  divLogin.append(sectionLogo, sectionDatos);
+  const gotoRegister = divLogin.querySelector('a');
+  gotoRegister.addEventListener('click', () => {
+    // const route = routes.find((routeFound) => routeFound.path ==);
+    navigateTo('/register');
+  });
+
   return divLogin;
 }
 
