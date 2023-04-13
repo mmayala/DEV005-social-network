@@ -1,5 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from "firebase/auth";
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { myFunction } from './lib/index.js';
 import { app, analytics, auth } from './firebase.js';
@@ -7,7 +7,7 @@ import login from './components/login.js';
 import register from './components/register.js';
 import './components/signinForm.js';
 
-// import { async } from "regenerator-runtime";
+//import { async } from "regenerator-runtime";
 // import { signin } from './components/signin.js';
 
 onAuthStateChanged(auth, async (user) => {
@@ -31,17 +31,16 @@ function navigateTo(hash) {
       route.path,
       window.location.origin + route.path,
     );
-    root.innerHTML = '';
-    root.appendChild(route.component(navigateTo));
+    root.appendChild(route.component());
   }
 }
-
 
 navigateTo(window.location.pathname);
 
 const gotoRegister = document.querySelector('a');
 gotoRegister.addEventListener('click', ( ) {
-navigateTo(window.location.register);
+  const route = routes.find((routeFound) => routeFound.path ==);
+navigateTo(window.location.);
 
 });
 
@@ -68,13 +67,13 @@ function signin() {
       console.log(error.code);
 
       if (error.code === 'auth/email-already-in-use') {
-        alert('El correo ya está registrado');
+        alert('El correo ya está registrado')
       } else if (error.code === 'auth/invalid-email') {
         alert('El correo que ingresaste es inválido');
       } else if (error.code === 'auth/weak-password') {
         alert('La contraseña que ingresaste es débil');
       } else if (error.code) {
-        alert('Algo va mal');
+        alert('Algo va mal')
       }
     }
   });
