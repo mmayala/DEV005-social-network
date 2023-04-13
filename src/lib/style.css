@@ -19,10 +19,10 @@ div {
 }
 
 .sectionLogo {
-    position: relative;
-    width: 50%;
-    text-align: center;
-    margin: 7em;
+  position: relative;
+  width: 50%;
+  text-align: center;
+  margin: 16em 7em 0 18em;
 }
 
 .logoMobile {
@@ -36,30 +36,37 @@ h3 {
 }
 
 .sectionDatos {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 2.5em;
+  border-radius: 1em;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /* display: block; */
+  /* justify-content: center; */
+  /* align-items: center; */
   width: 50%;
-  margin: 8em;
+  margin: 16em 8em 0 0;
 }
 
-#signin_email,
-#signin_password,
-#register_name,
-#register_email,
-#register_password,
-#register_confirm {
+.sectionDatos label {
+  /* text-align: center; */
+  margin-bottom: 0em;
+  font-weight: bold;
+  color: #29193e;
+  display: block;
+}
+
+#signin_email, #signin_password, #register_name, #register_email, #register_password, #register_confirm {
   color: darkgrey;
-  width: 35em;
-  height: 2em;
+  width: 53em;
+  height: 2.5em;
   margin-bottom: 1.5em;
   border-radius: 15px;
   padding-left: 10px;
+  display: block;
 }
 
 button {
-  width: 36em;
+  width: 54em;
   height: 3em;
   border: none;
   border-radius: 15px;
@@ -69,11 +76,14 @@ button {
   color: white;
   font-weight: bold;
   box-shadow: 5px 5px rgba(41, 25, 62, 0.2);
+  display: block;
 }
 
 p {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 2em;
+  font-weight: bold;
+  color: #29193e;
 }
 
 a {
@@ -81,20 +91,27 @@ a {
 }
 
 .btnGoogle {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: space-evenly;
+  text-align: center;
+  justify-content: center;
   background-color: white;
   color: rgb(41, 25, 62);
   font-weight: bold;
   border-radius: 15px;
-  width: 28em;
-  height: 3em;
+  width: 45em;
+  height: 2.5em;
   border: none;
+  box-shadow: 5px 5px rgba(41, 25, 62, 0.2);
 }
 
 .imgGoogle {
   width: 20px;
+  margin: 0.5em 1em;
+}
+
+span {
+  font-size: 15px;
 }
 
 /*@media only screen and (min-width: 360px){
