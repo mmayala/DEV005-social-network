@@ -37,14 +37,6 @@ function navigateTo(hash) {
 
 navigateTo(window.location.pathname);
 
-const gotoRegister = document.querySelector('a');
-gotoRegister.addEventListener('click', ( ) {
-  const route = routes.find((routeFound) => routeFound.path ==);
-navigateTo(window.location.);
-
-});
-
-
 function signin() {
   const signinForm = document.querySelector('#signin_form');
   // console.log(signinForm);

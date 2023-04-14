@@ -1,6 +1,6 @@
 function login(navigateTo) {
   const divLogin = document.createElement('div');
-  divLogin.id='loginContainer';
+  divLogin.id = 'loginContainer';
 
   const sectionLogo = document.createElement('section');
   sectionLogo.className = 'sectionLogo';

@@ -1,9 +1,8 @@
 function register() {
   const divRegister = document.createElement('div');
+  divRegister.id = 'registerContainer';
 
-  const backgroundImg = document.createElement('img');
-  backgroundImg.src = '/img/fondo_desktop.png';
-  backgroundImg.id = 'backgroundImg';
+ 
 
   const sectionLogo = document.createElement('section');
   sectionLogo.className = 'sectionLogo';
@@ -65,7 +64,7 @@ function register() {
   );
 
   sectionDatos.append(formRegister);
-  divRegister.append(backgroundImg, sectionLogo, sectionDatos);
+  divRegister.append(sectionLogo, sectionDatos);
   return divRegister;
 }
 
