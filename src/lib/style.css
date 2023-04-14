@@ -1,11 +1,13 @@
 * {
   margin: 0px;
+  
 }
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
   color: white;
+  
 }
 
 #backgroundImg {
@@ -14,7 +16,7 @@ body {
   height: 100%;
 }
 
-#loginContainer {
+#loginContainer, #registerContainer{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,17 +30,18 @@ body {
   box-sizing: border-box;
 }
 
+
+
 @media only screen and portrait {
   background-image: url(/img/fondo_mobile.png);
 }
 
 .sectionLogo {
-  position: relative;
-  width: 50%;
+  
   text-align: center;
-  /* margin: 16em 7em 0 18em; */
   flex: 1;
   min-width: 300px;
+  margin-bottom: 120px;
 }
 
 .logoMobile {
@@ -56,21 +59,15 @@ h3 {
   padding: 2.5em;
   border-radius: 1em;
   position: relative;
-  /* display: block; */
-  /* justify-content: center; */
-  /* align-items: center; */
   width: 50%;
-  /* margin: 16em 8em 0 0; */
   flex: 1;
   min-width: 300px;
 }
 
 .sectionDatos label {
-  /* text-align: center; */
-  margin-bottom: 0em;
   font-weight: bold;
   color: #29193e;
-  display: block;
+  
 }
 
 #signin_email, #signin_password, #register_name, #register_email, #register_password, #register_confirm {
@@ -80,7 +77,7 @@ h3 {
   margin-bottom: 1.5em;
   border-radius: 15px;
   padding-left: 10px;
-  display: block;
+ 
 }
 
 html {
@@ -97,7 +94,6 @@ button {
   background-color: #29193e;
   color: white;
   font-weight: bold;
-  box-shadow: 5px 5px rgba(41, 25, 62, 0.2);
   display: block;
 }
 
@@ -115,7 +111,6 @@ a {
 .btnGoogle {
   display: inline-flex;
   align-items: center;
-  text-align: center;
   justify-content: center;
   background-color: white;
   color: rgb(41, 25, 62);
@@ -123,8 +118,8 @@ a {
   border-radius: 15px;
   width: 100%;
   height: 2.5em;
-  border: none;
-  box-shadow: 5px 5px rgba(41, 25, 62, 0.2);
+  
+ 
 }
 
 .imgGoogle {
@@ -135,6 +130,7 @@ a {
 span {
   font-size: 15px;
 }
+
 
 /*@media only screen and (min-width: 360px){
     body{
