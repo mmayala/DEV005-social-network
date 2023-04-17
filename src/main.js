@@ -5,6 +5,7 @@ import { auth } from './firebase.js';
 import login from './components/login.js';
 import register from './components/register.js';
 import wall from './components/wall.js';
+
 //import './lib/registerForm.js';
 
 // import { async } from 'regenerator-runtime';
