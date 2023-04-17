@@ -13,6 +13,8 @@ function wall(navigateTo) {
 
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);
+    console.log('logOut');
+    navigateTo('/');
   });
 
   return divWall;
