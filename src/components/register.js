@@ -1,5 +1,4 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-//import { auth } from './firebase.js';
 import { auth } from '../firebase.js';
 
 function register(navigateTo) {
@@ -12,8 +11,7 @@ function register(navigateTo) {
   logo.className = 'logoMobile';
   logo.src = '/img/logo.png';
   const textWelcome = document.createElement('h3');
-  textWelcome.textContent =
-    'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
+  textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
   const sectionDatos = document.createElement('section');
@@ -84,7 +82,7 @@ function register(navigateTo) {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
         emailInput,
-        passwordInput
+        passwordInput,
       );
       console.log(userCredentials);
     } catch (error) {

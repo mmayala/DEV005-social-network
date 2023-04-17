@@ -10,7 +10,7 @@ function login(navigateTo) {
   logo.src = '/img/logo.png';
 
   const textWelcome = document.createElement('h3');
-  textWelcome.textContent ='Aquí encontrarás opiniones y recomendaciones de las mejores películas';
+  textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
   const sectionDatos = document.createElement('section');
@@ -78,7 +78,7 @@ function login(navigateTo) {
 
   const gotoRegister = divLogin.querySelector('a');
   gotoRegister.addEventListener('click', () => {
-  navigateTo('/register');
+    navigateTo('/register');
   });
 
   return divLogin;

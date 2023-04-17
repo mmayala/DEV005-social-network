@@ -7,7 +7,6 @@ import register from './components/register.js';
 import wall from './components/wall.js';
 //import './lib/registerForm.js';
 
-
 // import { async } from 'regenerator-runtime';
 // import { signin } from './components/signin.js';
 
@@ -41,6 +40,3 @@ function navigateTo(hash) {
 navigateTo(window.location.pathname);
 
 myFunction();
-//console.log(app);
-//console.log(analytics);
-//console.log(auth);
