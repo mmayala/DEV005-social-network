@@ -6,14 +6,16 @@ import login from './components/login.js';
 import register from './components/register.js';
 import wall from './components/wall.js';
 
-//import './lib/registerForm.js';
-
+// import './lib/registerForm.js';
 
 // import { async } from 'regenerator-runtime';
 // import { signin } from './components/signin.js';
+/* onAuthStateChanged(auth, async (user) => {
+  // console.log(user);
+}); */
 
-onAuthStateChanged(auth, async (user) => {
-  console.log(user);
+onAuthStateChanged(auth, async () => {
+  // console.log(user);
 });
 
 const routes = [
@@ -22,7 +24,7 @@ const routes = [
   { path: '/wall', component: wall },
 ];
 
-const defaultRoute = '/';
+// const defaultRoute = '/';
 
 const root = document.getElementById('root');
 
@@ -42,6 +44,6 @@ function navigateTo(hash) {
 navigateTo(window.location.pathname);
 
 myFunction();
-//console.log(app);
-//console.log(analytics);
-//console.log(auth);
+// console.log(app);
+// console.log(analytics);
+// console.log(auth);

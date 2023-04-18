@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-// import { auth } from './firebase.js';
+//  import { auth } from './firebase.js';
 import { auth } from '../firebase.js';
 
 function register(navigateTo) {
@@ -48,8 +48,8 @@ function register(navigateTo) {
   confirm.type = 'password';
   confirm.id = 'register_confirm';
 
-  const errorMessage = document.createElement('span');
-  errorMessage.id = 'message';
+  const spanMessage = document.createElement('span');
+  spanMessage.id = 'messageError';
 
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
@@ -64,7 +64,7 @@ function register(navigateTo) {
     password,
     labelConfirm,
     confirm,
-    errorMessage,
+    spanMessage,
     btnRegister,
   );
 
@@ -74,36 +74,36 @@ function register(navigateTo) {
   const message = divRegister.querySelector('#message');
 
   const signupForm = divRegister.querySelector('#register_form');
-  console.log(signupForm);
+  // console.log(signupForm);
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const nameInput = signupForm.register_name.value;
+    // const nameInput = signupForm.register_name.value;
     const emailInput = signupForm.register_email.value;
     const passwordInput = signupForm.register_password.value;
-    const confirmPassInput = signupForm.register_confirm.value;
-    console.log(nameInput, emailInput, passwordInput, confirmPassInput);
-
-    navigateTo('/wall');
+    // const confirmPassInput = signupForm.register_confirm.value;
+    // console.log(nameInput, emailInput, passwordInput, confirmPassInput);
 
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
+      // const userCredentials =
+      await createUserWithEmailAndPassword(
         auth,
         emailInput,
         passwordInput,
       );
-      console.log(userCredentials);
+      navigateTo('/wall');
+      // console.log(userCredentials);
     } catch (error) {
-      console.log(error.message);
-      console.log(error.code);
+      //  console.log(error.message);
+      //  console.log(error.code);
 
       if (error.code === 'auth/email-already-in-use') {
-        window.alert('El correo ya está registrado');
+        spanMessage.textContent = 'El correo ya está registrado';
       } else if (error.code === 'auth/invalid-email') {
-        window.alert('El correo que ingresaste es inválido');
+        spanMessage.textContent = 'El correo que ingresaste es inválido';
       } else if (error.code === 'auth/weak-password') {
-        window.alert('La contraseña que ingresaste es débil');
+        spanMessage.textContent = 'La contraseña que ingresaste es débil';
       } else if (error.code) {
-        window.alert('Algo va mal');
+        spanMessage.textContent = 'Algo va mal';
       }
     }
   });
