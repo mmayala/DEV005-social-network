@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-//import { auth } from './firebase.js';
+// import { auth } from './firebase.js';
 import { auth } from '../firebase.js';
 
 function register(navigateTo) {
@@ -12,8 +12,7 @@ function register(navigateTo) {
   logo.className = 'logoMobile';
   logo.src = '/img/logo.png';
   const textWelcome = document.createElement('h3');
-  textWelcome.textContent =
-    'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
+  textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
   const sectionDatos = document.createElement('section');
@@ -49,6 +48,9 @@ function register(navigateTo) {
   confirm.type = 'password';
   confirm.id = 'register_confirm';
 
+  const errorMessage = document.createElement('span');
+  errorMessage.id = 'message';
+
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
   btnRegister.type = 'submit';
@@ -62,11 +64,14 @@ function register(navigateTo) {
     password,
     labelConfirm,
     confirm,
+    errorMessage,
     btnRegister,
   );
 
   sectionDatos.append(formRegister);
   divRegister.append(sectionLogo, sectionDatos);
+
+  const message = divRegister.querySelector('#message');
 
   const signupForm = divRegister.querySelector('#register_form');
   console.log(signupForm);
@@ -84,7 +89,7 @@ function register(navigateTo) {
       const userCredentials = await createUserWithEmailAndPassword(
         auth,
         emailInput,
-        passwordInput
+        passwordInput,
       );
       console.log(userCredentials);
     } catch (error) {
@@ -92,13 +97,13 @@ function register(navigateTo) {
       console.log(error.code);
 
       if (error.code === 'auth/email-already-in-use') {
-        alert('El correo ya está registrado');
+        window.alert('El correo ya está registrado');
       } else if (error.code === 'auth/invalid-email') {
-        alert('El correo que ingresaste es inválido');
+        window.alert('El correo que ingresaste es inválido');
       } else if (error.code === 'auth/weak-password') {
-        alert('La contraseña que ingresaste es débil');
+        window.alert('La contraseña que ingresaste es débil');
       } else if (error.code) {
-        alert('Algo va mal');
+        window.alert('Algo va mal');
       }
     }
   });
