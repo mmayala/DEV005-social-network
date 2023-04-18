@@ -1,8 +1,8 @@
 // importamos la funcion que vamos a testear
-import { myFunction } from '../src/lib/index';
+import register from '../src/components/register.js';
 
-describe('myFunction', () => {
-  it('debería ser una función', () => {
-    expect(typeof myFunction).toBe('function');
+describe('register', () => {
+  test('it should be a function', () => {
+    expect(typeof register).toBe('function');
   });
 });

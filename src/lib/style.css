@@ -29,9 +29,6 @@ body {
   box-sizing: border-box;
 }
 
-@media only screen and portrait {
-  background-image: url(/img/fondo_mobile.png);
-}
 
 .sectionLogo {
   text-align: center;
@@ -127,7 +124,12 @@ a {
 span {
   font-size: 15px;
 }
-
+@media only screen and (orientation: portrait) {
+  #loginContainer{
+    background-image: url(/img/fondo_mobile.png);
+  }
+  
+}
 /*@media only screen and (min-width: 360px){
     body{
         background-image:url(/img/fondo_mobile.png);

@@ -47,6 +47,9 @@ function register(navigateTo) {
   confirm.type = 'password';
   confirm.id = 'register_confirm';
 
+  const errorMsg = document.createElement('span');
+  errorMsg.id = 'message';
+
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
   btnRegister.type = 'submit';
@@ -60,6 +63,7 @@ function register(navigateTo) {
     password,
     labelConfirm,
     confirm,
+    errorMsg,
     btnRegister,
   );
 
@@ -67,37 +71,39 @@ function register(navigateTo) {
   divRegister.append(sectionLogo, sectionDatos);
 
   const signupForm = divRegister.querySelector('#register_form');
-  console.log(signupForm);
-  signupForm.addEventListener('submit', async (e) => {
+  // console.log(signupForm);
+
+  signupForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const nameInput = signupForm.register_name.value;
+    // const nameInput = signupForm.register_name.value;
     const emailInput = signupForm.register_email.value;
     const passwordInput = signupForm.register_password.value;
-    const confirmPassInput = signupForm.register_confirm.value;
-    console.log(nameInput, emailInput, passwordInput, confirmPassInput);
-
-    navigateTo('/wall');
+    // const confirmPassInput = signupForm.register_confirm.value;
+    // console.log(nameInput, emailInput, passwordInput, confirmPassInput);
+    const message = divRegister.querySelector('#message');
 
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
+      const userCredentials = createUserWithEmailAndPassword(
         auth,
         emailInput,
         passwordInput,
       );
-      console.log(userCredentials);
-    } catch (error) {
-      console.log(error.message);
-      console.log(error.code);
 
+      // console.log(userCredentials);
+    } catch (error) {
+      // console.log(error.message);
+      // console.log(error.code);
       if (error.code === 'auth/email-already-in-use') {
-        alert('El correo ya está registrado');
+        message.innerHTML = 'El correo ya está registrado';
       } else if (error.code === 'auth/invalid-email') {
-        alert('El correo que ingresaste es inválido');
+        alert ('El correo que ingresaste es inválido') ;
       } else if (error.code === 'auth/weak-password') {
-        alert('La contraseña que ingresaste es débil');
+        message.innerHTML = 'La contraseña que ingresaste es débil';
       } else if (error.code) {
-        alert('Algo va mal');
+        message.innerHTML = 'Algo va mal';
       }
+
+      navigateTo('/wall');
     }
   });
 
