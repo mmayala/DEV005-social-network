@@ -2,8 +2,6 @@ function register() {
   const divRegister = document.createElement('div');
   divRegister.id = 'registerContainer';
 
- 
-
   const sectionLogo = document.createElement('section');
   sectionLogo.className = 'sectionLogo';
   const logo = document.createElement('img');

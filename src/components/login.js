@@ -38,7 +38,7 @@ function login(navigateTo) {
   register.textContent = '¿Todavía no tienes una cuenta?   ';
   const registerLink = document.createElement('a');
   registerLink.innerHTML = 'Registrate aquí';
-  registerLink.href = '#';
+  registerLink.href = '';
   register.appendChild(registerLink);
 
   const o = document.createElement('p');
@@ -69,6 +69,7 @@ function login(navigateTo) {
 
   sectionDatos.append(formLogin);
   divLogin.append(sectionLogo, sectionDatos);
+  
   const gotoRegister = divLogin.querySelector('a');
   gotoRegister.addEventListener('click', () => {
     // const route = routes.find((routeFound) => routeFound.path ==);

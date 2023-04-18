@@ -31,7 +31,8 @@ function navigateTo(hash) {
       route.path,
       window.location.origin + route.path,
     );
-    root.appendChild(route.component());
+    root.innerHTML='';
+    root.appendChild(route.component(navigateTo));
   }
 }
 
@@ -72,7 +73,6 @@ function signin() {
 }
 
 signin();
-
 
 myFunction();
 
