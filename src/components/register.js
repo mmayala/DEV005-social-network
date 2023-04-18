@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-//import { auth } from './firebase.js';
+// import { auth } from './firebase.js';
 import { auth } from '../firebase.js';
 
 function register(navigateTo) {
@@ -12,8 +12,7 @@ function register(navigateTo) {
   logo.className = 'logoMobile';
   logo.src = '/img/logo.png';
   const textWelcome = document.createElement('h3');
-  textWelcome.textContent =
-    'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
+  textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
   const sectionDatos = document.createElement('section');
@@ -49,6 +48,9 @@ function register(navigateTo) {
   confirm.type = 'password';
   confirm.id = 'register_confirm';
 
+  const spanMessage = document.createElement('span');
+  spanMessage.id = 'messageError';
+
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
   btnRegister.type = 'submit';
@@ -62,6 +64,7 @@ function register(navigateTo) {
     password,
     labelConfirm,
     confirm,
+    spanMessage,
     btnRegister,
   );
 
@@ -69,36 +72,36 @@ function register(navigateTo) {
   divRegister.append(sectionLogo, sectionDatos);
 
   const signupForm = divRegister.querySelector('#register_form');
-  console.log(signupForm);
+  // console.log(signupForm);
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const nameInput = signupForm.register_name.value;
+    // const nameInput = signupForm.register_name.value;
     const emailInput = signupForm.register_email.value;
     const passwordInput = signupForm.register_password.value;
-    const confirmPassInput = signupForm.register_confirm.value;
-    console.log(nameInput, emailInput, passwordInput, confirmPassInput);
-
-    navigateTo('/wall');
+    // const confirmPassInput = signupForm.register_confirm.value;
+    // console.log(nameInput, emailInput, passwordInput, confirmPassInput);
 
     try {
-      const userCredentials = await createUserWithEmailAndPassword(
+      // const userCredentials =
+      await createUserWithEmailAndPassword(
         auth,
         emailInput,
-        passwordInput
+        passwordInput,
       );
-      console.log(userCredentials);
+      navigateTo('/wall');
+      // console.log(userCredentials);
     } catch (error) {
-      console.log(error.message);
-      console.log(error.code);
+      //  console.log(error.message);
+      //  console.log(error.code);
 
       if (error.code === 'auth/email-already-in-use') {
-        alert('El correo ya está registrado');
+        spanMessage.textContent = 'El correo ya está registrado';
       } else if (error.code === 'auth/invalid-email') {
-        alert('El correo que ingresaste es inválido');
+        spanMessage.textContent = 'El correo que ingresaste es inválido';
       } else if (error.code === 'auth/weak-password') {
-        alert('La contraseña que ingresaste es débil');
+        spanMessage.textContent = 'La contraseña que ingresaste es débil';
       } else if (error.code) {
-        alert('Algo va mal');
+        spanMessage.textContent = 'Algo va mal';
       }
     }
   });
