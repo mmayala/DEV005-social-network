@@ -1,4 +1,3 @@
-// importamos la funcion que vamos a testear
 import register from '../src/components/register.js';
 
 describe('register', () => {
