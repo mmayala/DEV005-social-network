@@ -12,7 +12,6 @@ function register(navigateTo) {
   logo.src = '/img/logo.png';
   const textWelcome = document.createElement('h3');
   textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
-  textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
   const sectionDatos = document.createElement('section');
@@ -50,10 +49,11 @@ function register(navigateTo) {
 
   const spanMessage = document.createElement('span');
   spanMessage.id = 'messageError';
-
+ 
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
   btnRegister.type = 'submit';
+  btnRegister.id = 'btn-Register';
 
   formRegister.append(
     labelName,
@@ -103,8 +103,6 @@ function register(navigateTo) {
       } else if (error.code) {
         spanMessage.textContent = 'Algo va mal';
       }
-
-      navigateTo('/wall');
     }
   });
 
