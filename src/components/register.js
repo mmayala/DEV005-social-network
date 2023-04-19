@@ -71,8 +71,6 @@ function register(navigateTo) {
   sectionDatos.append(formRegister);
   divRegister.append(sectionLogo, sectionDatos);
 
-  const message = divRegister.querySelector('#message');
-
   const signupForm = divRegister.querySelector('#register_form');
   // console.log(signupForm);
   signupForm.addEventListener('submit', async (e) => {
