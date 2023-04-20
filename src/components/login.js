@@ -46,9 +46,10 @@ function login(navigateTo) {
   const btnLogin = document.createElement('button');
   btnLogin.textContent = 'INICIAR SESIÓN';
   btnLogin.type = 'submit';
+  btnLogin.id = 'btnLogin';
 
   const register = document.createElement('p');
-  register.textContent = '¿Todavía no tienes una cuenta?   ';
+  register.textContent = '¿No tienes una cuenta?   ';
 
   const registerLink = document.createElement('a');
   registerLink.innerHTML = 'Registrate aquí';
@@ -60,6 +61,7 @@ function login(navigateTo) {
 
   const btnGoogle = document.createElement('div');
   btnGoogle.className = 'btnGoogle';
+  btnGoogle.id = 'btnGoogle';
 
   const imgGoogle = document.createElement('img');
   imgGoogle.src = '/img/logo_google.png';
@@ -67,6 +69,7 @@ function login(navigateTo) {
 
   const txtGoogle = document.createElement('span');
   txtGoogle.innerHTML = 'CONTINÚA CON GOOGLE';
+  txtGoogle.id = 'continueWithGoogle';
 
   btnGoogle.append(imgGoogle, txtGoogle);
 
