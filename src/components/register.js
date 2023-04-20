@@ -1,5 +1,8 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+<<<<<<< HEAD
 //  import { auth } from './firebase.js';
+=======
+>>>>>>> ffa720619b568fc29c23c9b5c28ccfb4e5350f9b
 import { auth } from '../firebase.js';
 
 function register(navigateTo) {
@@ -50,10 +53,11 @@ function register(navigateTo) {
 
   const spanMessage = document.createElement('span');
   spanMessage.id = 'messageError';
-
+ 
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
   btnRegister.type = 'submit';
+  btnRegister.id = 'btn-Register';
 
   formRegister.append(
     labelName,
