@@ -97,6 +97,7 @@ function login(navigateTo) {
   const googleBtn = divLogin.querySelector('.btnGoogle');
   // console.log(googleBtn);
   googleBtn.addEventListener('click', async () => {
+    // console.log("hola")
     const provider = new GoogleAuthProvider();
 
     try {
