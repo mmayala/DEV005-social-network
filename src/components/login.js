@@ -1,7 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
-
-// import { async } from 'regenerator-runtime';
-import { auth } from '../firebase.js';
+import { signIn, signInWithCredentials } from '../lib/loginservice.js';
 
 function login(navigateTo) {
   const divLogin = document.createElement('div');
@@ -93,19 +90,16 @@ function login(navigateTo) {
   });
 
   // Logearse con Google
-
   const googleBtn = divLogin.querySelector('.btnGoogle');
   // console.log(googleBtn);
   googleBtn.addEventListener('click', async () => {
-    const provider = new GoogleAuthProvider();
-
     try {
-      const credentials = await signInWithPopup(auth, provider);
+      const credentials = await signIn();
       // console.log(credentials);
       navigateTo('/wall');
       document.write(`Bienvenido ${credentials.user.displayName}`);
     } catch (error) {
-    //  console.log(error);
+      //  console.log(error);
     }
   });
 
@@ -117,21 +111,12 @@ function login(navigateTo) {
     const emailLogin = signinLogin.signin_email.value;
     const passwordLogin = signinLogin.signin_password.value;
 
-    try {
-      // const credentials =
-      await signInWithEmailAndPassword(auth, emailLogin, passwordLogin);
-      // console.log(credentials);
-      spanMessage.textContent = 'Has iniciado sesión correctamente';
+    const result = await signInWithCredentials(emailLogin, passwordLogin);
+
+    spanMessage.textContent = result.message;
+
+    if (result.ok) {
       navigateTo('/wall');
-    } catch (error) {
-      // console.log(error.code);
-      if (error.code === 'auth/wrong-password') {
-        spanMessage.textContent = 'La contraseña que ingresaste es incorrecta';
-      } else if (error.code === 'auth/user-not-found') {
-        spanMessage.textContent = 'El correo que ingresaste es inválido';
-      } else {
-        spanMessage.textContent = 'Algo va mal';
-      }
     }
   });
 
