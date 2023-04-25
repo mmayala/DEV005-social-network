@@ -24,6 +24,6 @@ export const signInWithCredentials = async function (emailLogin, passwordLogin) 
   }
   return {
     ok: result,
-    message: message,
+    message,
   };
 };
