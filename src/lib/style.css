@@ -29,6 +29,7 @@ body {
   box-sizing: border-box;
 }
 
+
 .sectionLogo {
   text-align: center;
   flex: 1;
@@ -100,6 +101,10 @@ a {
   color: white;
 }
 
+#btnLogin{
+  margin-bottom: 20px;
+} 
+
 .btnGoogle {
   display: inline-flex;
   align-items: center;
@@ -117,10 +122,13 @@ a {
   margin: 0.5em 1em;
 }
 
-span {
+#continueWithGoogle {
   font-size: 15px;
 }
 
+#signOutBtn{
+  width: 100px;
+}
 
 @media only screen and (orientation: portrait) {
   #loginContainer{
@@ -130,13 +138,46 @@ span {
   min-height: 100vh;
   box-sizing: border-box;
   }
+  .sectionDatos{
+    min-width: 200px;
+  }
 
   .logoMobile{
     width: 70%;
+    margin: 0%;
   }
   .sectionLogo h3{
     font-size: 18px;
   }
+
+  #signin_email,
+#signin_password,
+#register_name,
+#register_email,
+#register_password,
+#register_confirm {
+  width: 90%;
+}
+
+#btnLogin,
+#btnGoogle, 
+#btn-Register{
+  width: 97%;
+}
+#btnLogin{
+  margin-bottom: 10px;
+}
+
+#btnGoogle{
+  font-size: 12px;
+}
+
+#continueWithGoogle {
+  font-size: 12px;
+}
+.imgGoogle {
+  margin: 0.5em 0.5em;
+}
 }
 
 /*@media only screen and (min-width: 360px){

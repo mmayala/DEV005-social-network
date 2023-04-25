@@ -1,7 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
-
-// import { async } from 'regenerator-runtime';
-import { auth } from '../firebase.js';
+import { signIn, signInWithCredentials } from '../lib/loginService';
 
 function login(navigateTo) {
   const divLogin = document.createElement('div');
@@ -46,9 +43,10 @@ function login(navigateTo) {
   const btnLogin = document.createElement('button');
   btnLogin.textContent = 'INICIAR SESIÓN';
   btnLogin.type = 'submit';
+  btnLogin.id = 'btnLogin';
 
   const register = document.createElement('p');
-  register.textContent = '¿Todavía no tienes una cuenta?   ';
+  register.textContent = '¿No tienes una cuenta?   ';
 
   const registerLink = document.createElement('a');
   registerLink.innerHTML = 'Registrate aquí';
@@ -60,6 +58,7 @@ function login(navigateTo) {
 
   const btnGoogle = document.createElement('div');
   btnGoogle.className = 'btnGoogle';
+  btnGoogle.id = 'btnGoogle';
 
   const imgGoogle = document.createElement('img');
   imgGoogle.src = '/img/logo_google.png';
@@ -67,6 +66,7 @@ function login(navigateTo) {
 
   const txtGoogle = document.createElement('span');
   txtGoogle.innerHTML = 'CONTINÚA CON GOOGLE';
+  txtGoogle.id = 'continueWithGoogle';
 
   btnGoogle.append(imgGoogle, txtGoogle);
 
@@ -90,19 +90,16 @@ function login(navigateTo) {
   });
 
   // Logearse con Google
-
   const googleBtn = divLogin.querySelector('.btnGoogle');
   // console.log(googleBtn);
   googleBtn.addEventListener('click', async () => {
-    const provider = new GoogleAuthProvider();
-
     try {
-      const credentials = await signInWithPopup(auth, provider);
+      const credentials = await signIn();
       // console.log(credentials);
       navigateTo('/wall');
-      document.write(`Bienvenido ${credentials.user.displayName}`);
+      alert(`Bienvenido ${credentials.user.displayName}`);
     } catch (error) {
-    //  console.log(error);
+      //  console.log(error);
     }
   });
 
@@ -114,21 +111,12 @@ function login(navigateTo) {
     const emailLogin = signinLogin.signin_email.value;
     const passwordLogin = signinLogin.signin_password.value;
 
-    try {
-      // const credentials =
-      await signInWithEmailAndPassword(auth, emailLogin, passwordLogin);
-      // console.log(credentials);
-      spanMessage.textContent = 'Has iniciado sesión correctamente';
+    const result = await signInWithCredentials(emailLogin, passwordLogin);
+
+    spanMessage.textContent = result.message;
+
+    if (result.ok) {
       navigateTo('/wall');
-    } catch (error) {
-      // console.log(error.code);
-      if (error.code === 'auth/wrong-password') {
-        spanMessage.textContent = 'La contraseña que ingresaste es incorrecta';
-      } else if (error.code === 'auth/user-not-found') {
-        spanMessage.textContent = 'El correo que ingresaste es inválido';
-      } else {
-        spanMessage.textContent = 'Algo va mal';
-      }
     }
   });
 
