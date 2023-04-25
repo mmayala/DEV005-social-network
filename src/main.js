@@ -1,7 +1,8 @@
 // Este es el punto de entrada de tu aplicacion
 import { onAuthStateChanged } from 'firebase/auth';
+import { doc, getDocs, setDoc, collection } from 'firebase/firestore';
 import { myFunction } from './lib/index.js';
-import { auth } from './firebase.js';
+import { auth, db } from './firebase.js';
 import login from './components/login.js';
 import register from './components/register.js';
 import wall from './components/wall.js';
@@ -14,8 +15,21 @@ import wall from './components/wall.js';
   // console.log(user);
 }); */
 
-onAuthStateChanged(auth, async () => {
-  // console.log(user);
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    // Add a new document in collection "cities"
+    const postSnapshot=  await setDoc(doc(db, 'Post', 'asddasfafl34l2k34l23'), {
+      Comentario:'Maléfica, me encantó',
+      Like:'2',
+    });
+    console.log(postSnapshot)
+    // const postSnapshot = await getDocs(collection(db, 'Post'));
+    // const data = postSnapshot.docs;
+    // data.forEach((doc) => {
+    //   const post = doc.data();
+    //   console.log(post);
+    // });
+  }
 });
 
 const routes = [

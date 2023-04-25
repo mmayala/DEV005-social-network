@@ -4,14 +4,38 @@
 
 import register from '../src/components/register.js';
 
+const mockRegister = () => {
+  const container = document.createElement('section');
+  const welcome = document.createElement('h2');
+  welcome.textContent = 'Puedes registrarte';
+
+  container.append(welcome);
+
+  return container;
+};
+
 describe('register', () => {
   test('it should be a function', () => {
     expect(typeof register).toBe('function');
   });
-  test('have a button', () => {
-    const DOM = document.createElement('div');
+  test('ejemplo', () => {
+    // const DOM = document.createElement('div');
+    document.body.innerHTML = '<div id="root"></div>';
+    const DOM = document.getElementById('root');
+    DOM.append(mockRegister());
+    console.log('ver el DOM: ', DOM.textContent);
+    // const haveabutton = DOM.querySelector('btn-Register');
+    // console.log('****************', haveabutton);
+    // expect(haveabutton).not.toBe(null);
+  });
+  test('xxxxxx', () => {
+    // const DOM = document.createElement('div');
+    document.body.innerHTML = '<div id="root"></div>';
+    const DOM = document.getElementById('root');
     DOM.append(register());
-    const haveabutton = DOM.querySelector('btn-Register');
-    expect(haveabutton).not.toBe(undefined);
+    console.log('ver con Register: ', document.getElementById('btn-Register'));
+    const haveabutton = document.getElementById('btn-Register');
+    console.log('****************', haveabutton);
+    expect(haveabutton).not.toBe(null);
   });
 });

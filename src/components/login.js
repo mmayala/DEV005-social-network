@@ -1,4 +1,4 @@
-import { signIn, signInWithCredentials } from '../lib/loginservice.js';
+import { signIn, signInWithCredentials } from '../lib/loginService';
 
 function login(navigateTo) {
   const divLogin = document.createElement('div');
@@ -97,7 +97,7 @@ function login(navigateTo) {
       const credentials = await signIn();
       // console.log(credentials);
       navigateTo('/wall');
-      document.write(`Bienvenido ${credentials.user.displayName}`);
+      alert(`Bienvenido ${credentials.user.displayName}`);
     } catch (error) {
       //  console.log(error);
     }

@@ -49,7 +49,7 @@ function register(navigateTo) {
 
   const spanMessage = document.createElement('span');
   spanMessage.id = 'messageError';
- 
+
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
   btnRegister.type = 'submit';
