@@ -1,8 +1,8 @@
 // Este es el punto de entrada de tu aplicacion
 // import { onAuthStateChanged } from 'firebase/auth';
 
-import { myFunction } from './lib/index.js';
-import { db,  collection, addDoc, getDocs, onSnapshot, orderBy, query,} from './firestore.js';
+// import { myFunction } from './lib/index.js';
+// import { auth } from './firebase.js';
 import login from './components/login.js';
 import register from './components/register.js';
 import wall from './components/wall.js';
@@ -10,29 +10,10 @@ import wall from './components/wall.js';
 /* onAuthStateChanged(auth, async (user) => {
   // console.log(user);
 }); */
-/* onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    // Add a new document in collection "cities"
-    const postSnapshot =  await setDoc(doc(db, 'Post', 'asddasfafl34l2k34l23'), {
-      Comentario:'Maléfica, me encantó',
-      Like:'2',
-    });
-    console.log(postSnapshot);
-    // const postSnapshot = await getDocs(collection(db, 'Post'));
-    // const data = postSnapshot.docs;
-    // data.forEach((doc) => {
-    //   const post = doc.data();
-    //   console.log(post);
-    // });
-  }
-}); */
-const postCollection = collection(db, 'posts');
-
-export const addPost = (comment) => {
-  addDoc(postCollection, {
-    comment,
-  });
+const init = () => {
+  document.getElementById('root').append(wall());
 };
+window.onload = init();
 
 const routes = [
   { path: '/', component: login },
@@ -59,4 +40,15 @@ function navigateTo(hash) {
 
 navigateTo(window.location.pathname);
 
-myFunction();
+// myFunction();
+
+// const postSnapshot = await getDocs(collection(db, 'Post'));
+// const data = postSnapshot.docs;
+// data.forEach((doc) => {
+//   const post = doc.data();
+//   console.log(post);
+// });
+
+// console.log(app);
+// console.log(analytics);
+// console.log(auth);

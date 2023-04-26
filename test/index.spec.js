@@ -3,6 +3,7 @@
  */
 
 import register from '../src/components/register.js';
+import login from '../src/components/login.js';
 
 const mockRegister = () => {
   const container = document.createElement('section');
@@ -37,5 +38,27 @@ describe('register', () => {
     const haveabutton = document.getElementById('btn-Register');
     console.log('****************', haveabutton);
     expect(haveabutton).not.toBe(null);
+  });
+});
+
+describe('Button Google', () => {
+  test('login with google call function navigateTo', () => {
+    const DOM = document.createElement('div');
+    DOM.append(register());
+    console.log('ver con Register: ', document.getElementById('btn-Register'));
+    const haveabutton = document.getElementById('btn-Register');
+    console.log('****************', haveabutton);
+    expect(haveabutton).not.toBe(null);
+  });
+});
+
+describe('Button Googlee', () => {
+  test('login with google call function navigateTo', () => {
+    const DOM = document.createElement('div');
+    const navigateTo = jest.fn();
+    DOM.append(login(navigateTo));
+    const googleButton = DOM.querySelector('#btnGoogle');
+    googleButton.click();
+    expect(navigateTo).toHaveBeenCalledTimes(0);
   });
 });
