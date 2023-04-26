@@ -40,7 +40,7 @@ body {
  
 }
 #loginContainer,
-#registerContaine {
+#registerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
