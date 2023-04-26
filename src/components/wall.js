@@ -1,17 +1,22 @@
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
+import { addPost, paintRealTime } from '../lib/index';
 
 function wall(navigateTo) {
   const divWall = document.createElement('div');
   divWall.id = 'wallContainer';
 
   const navWall = document.createElement('nav');
+  navWall.id = 'navWall';
 
   const signOutBtn = document.createElement('button');
   signOutBtn.textContent = 'Cerrar Sesión';
   signOutBtn.id = 'signOutBtn';
+  const logo = document.createElement('img');
+  logo.className = 'logoWall';
+  logo.src = '/img/logo.png';
 
-  navWall.append(signOutBtn);
+  navWall.append(logo, signOutBtn);
 
   const sectionWall = document.createElement('section');
   const divCreatePost = document.createElement('div');
@@ -19,16 +24,40 @@ function wall(navigateTo) {
   const imgPost = document.createElement('img');
   const txtPost = document.createElement('textarea');
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
+  txtPost.id = 'texPost';
   const buttonPost = document.createElement('button');
   buttonPost.textContent = 'Publicar';
   buttonPost.id = 'buttonPost';
+  const postSection = document.createElement('article');
+  postSection.className = 'postArticle';
 
   divImgComent.append(imgPost, txtPost);
   divCreatePost.append(divImgComent, buttonPost);
 
   sectionWall.appendChild(divCreatePost);
 
-  divWall.append(navWall, sectionWall);
+  divWall.append(navWall, sectionWall, postSection);
+
+  //
+  divWall.querySelector('#buttonPost').addEventListener('click', () => {
+    const comment = divWall.querySelector('#texPost');
+    addPost(comment.value);
+    comment.value = '';
+    // console.log('comment');
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    // console.log(postSnapshot);
+    paintRealTime((postSnapshot) => {
+      postSection.textContent = '';
+      postSnapshot.forEach((doc) => {
+        // console.log('data:', doc.data());
+        const post = document.createElement('input');
+        post.value = doc.data().comment;
+        postSection.append(post);
+      });
+    });
+  });
 
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);

@@ -52,7 +52,7 @@ describe('Button Google', () => {
   });
 });
 
-describe('Button Google', () => {
+describe('Button Googlee', () => {
   test('login with google call function navigateTo', () => {
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
