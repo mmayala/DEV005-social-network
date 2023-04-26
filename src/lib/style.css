@@ -14,31 +14,6 @@ body {
   height: 100%;
 }
 
-#navWall {
-  display: flex;
-  background-color: #A31721;
-  min-height: 50px;
-  padding: 10px;
-}
-
-#signOutBtn{
-  margin-left: 50%;
- 
-}
-
-.logoWall{
-  width: 70px;
-  height: 70px;
-  margin-left: 35%;
-  padding: 20px;
-}
-
-#texPost{
-  width: 100%;
-  height: 100%;
-  margin: 200px;
- 
-}
 #loginContainer,
 #registerContainer {
   display: flex;
@@ -151,8 +126,65 @@ a {
   font-size: 15px;
 }
 
+
+
+/*Wall*/
+#navWall {
+  display: flex;
+  background-color: #A31721;
+  height: 12vh;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.logoWall{
+  height: 80%;
+}
+
+#titleWall{
+  font-size: 50px;
+}
+
 #signOutBtn{
-  width: 100px;
+  width: 100px; 
+}
+
+#wallContainer {
+  background-image: url(/img/fondo_wall.png);
+  background-repeat: repeat;
+  min-height: 100vh;
+}
+
+#wallContainer section , article{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 0;
+}
+
+
+#wallContainer article textarea{
+  resize: none;
+  width: 400px;
+  height: 150px;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  padding: 2%; 
+  background-color: #D9D9D9;
+  color: black;
+  
+  
+  
+}
+
+#texPost{
+  width: 400px;
+  height: 100px;
+  resize: none;
+  border-radius: 15px;
+  box-shadow:  0 5px 0 rgb(161, 155, 155);
+  padding: 2%; 
 }
 
 @media only screen and (orientation: portrait) {
@@ -205,54 +237,3 @@ a {
 }
 }
 
-/*@media only screen and (min-width: 360px){
-    body{
-        background-image:url(/img/fondo_mobile.png);
-    }
-    .sectionLogo{
-        text-align: center;
-        padding: 7%;
-        font-size: 1.9vh;
-    }
-    .sectionDatos{
-        display: inline-block;
-        margin: auto;
-        text-align: center;
-
-    }
-    input, button{
-        display: block;
-        margin: auto;
-        margin: 5% auto;
-        width: 70%;
-        padding: 2%;
-        border-radius: 15px;
-    }
-    .sectionDatos input{
-        background-color: #D9D9D9;
-        
-    }
-    .sectionDatos button{
-        background-color: #29193E;
-        color: white;
-    }
-    .btnRed{
-        display: inline-flex;
-        margin: 5%;
-
- 
-    }
-    .sectionDatos ::placeholder{
-        font-size: 2vh;
-        color: black;
-    }
-    .logoMobile{
-        width: 80%;
-        height: auto;
- 
-    }
-    .btnRed{
-        width: 10%;
-        height: auto;
-    }
-}*/
