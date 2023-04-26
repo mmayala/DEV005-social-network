@@ -1,28 +1,23 @@
 // Este es el punto de entrada de tu aplicacion
-import { onAuthStateChanged } from 'firebase/auth';
-import { doc, getDocs, setDoc, collection } from 'firebase/firestore';
+// import { onAuthStateChanged } from 'firebase/auth';
+
 import { myFunction } from './lib/index.js';
-import { auth, db } from './firebase.js';
+import { db,  collection, addDoc, getDocs, onSnapshot, orderBy, query,} from './firestore.js';
 import login from './components/login.js';
 import register from './components/register.js';
 import wall from './components/wall.js';
 
-// import './lib/registerForm.js';
-
-// import { async } from 'regenerator-runtime';
-// import { signin } from './components/signin.js';
 /* onAuthStateChanged(auth, async (user) => {
   // console.log(user);
 }); */
-
-onAuthStateChanged(auth, async (user) => {
+/* onAuthStateChanged(auth, async (user) => {
   if (user) {
     // Add a new document in collection "cities"
-    const postSnapshot=  await setDoc(doc(db, 'Post', 'asddasfafl34l2k34l23'), {
+    const postSnapshot =  await setDoc(doc(db, 'Post', 'asddasfafl34l2k34l23'), {
       Comentario:'Maléfica, me encantó',
       Like:'2',
     });
-    console.log(postSnapshot)
+    console.log(postSnapshot);
     // const postSnapshot = await getDocs(collection(db, 'Post'));
     // const data = postSnapshot.docs;
     // data.forEach((doc) => {
@@ -30,7 +25,14 @@ onAuthStateChanged(auth, async (user) => {
     //   console.log(post);
     // });
   }
-});
+}); */
+const postCollection = collection(db, 'posts');
+
+export const addPost = (comment) => {
+  addDoc(postCollection, {
+    comment,
+  });
+};
 
 const routes = [
   { path: '/', component: login },
@@ -58,6 +60,3 @@ function navigateTo(hash) {
 navigateTo(window.location.pathname);
 
 myFunction();
-// console.log(app);
-// console.log(analytics);
-// console.log(auth);

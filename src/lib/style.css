@@ -130,6 +130,10 @@ a {
   width: 100px;
 }
 
+#buttonPost{
+  width: 100px;
+}
+
 @media only screen and (orientation: portrait) {
   #loginContainer{
   background-image: url(/img/fondo_mobile.png);

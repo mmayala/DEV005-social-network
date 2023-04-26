@@ -1,5 +1,6 @@
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
+// import { addPost } from '../main.js';
 
 function wall(navigateTo) {
   const divWall = document.createElement('div');
@@ -19,6 +20,7 @@ function wall(navigateTo) {
   const imgPost = document.createElement('img');
   const txtPost = document.createElement('textarea');
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
+  txtPost.id = 'commentPost';
   const buttonPost = document.createElement('button');
   buttonPost.textContent = 'Publicar';
   buttonPost.id = 'buttonPost';
@@ -30,9 +32,9 @@ function wall(navigateTo) {
 
   divWall.append(navWall, sectionWall);
 
+// Evento que cierra sesión
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);
-    // console.log('logOut');
     navigateTo('/');
   });
 
