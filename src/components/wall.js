@@ -12,9 +12,11 @@ function wall(navigateTo) {
   const signOutBtn = document.createElement('button');
   signOutBtn.textContent = 'CERRAR SESIÓN';
   signOutBtn.id = 'signOutBtn';
+
   const cineMatchtitle = document.createElement('h1');
   cineMatchtitle.textContent = 'CINE MATCH';
   cineMatchtitle.id = 'titleWall';
+
   const logo = document.createElement('img');
   logo.className = 'logoWall';
   logo.src = '/img/logopost.png';
@@ -38,9 +40,9 @@ function wall(navigateTo) {
   divImgComent.append(imgPost, txtPost);
   divCreatePost.append(divImgComent, buttonPost);
 
-  sectionWall.appendChild(divCreatePost);
+  sectionWall.append(divCreatePost, postSection);
 
-  divWall.append(navWall, sectionWall, postSection);
+  divWall.append(navWall, sectionWall);
 
   //
   divWall.querySelector('#buttonPost').addEventListener('click', () => {
@@ -56,7 +58,8 @@ function wall(navigateTo) {
       postSection.textContent = '';
       postSnapshot.forEach((doc) => {
         // console.log('data:', doc.data());
-        const post = document.createElement('input');
+        const post = document.createElement('textarea');
+        post.readOnly = 'false';
         post.value = doc.data().comment;
         postSection.append(post);
       });

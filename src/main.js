@@ -7,6 +7,8 @@ import login from './components/login.js';
 import register from './components/register.js';
 import wall from './components/wall.js';
 
+
+
 /* onAuthStateChanged(auth, async (user) => {
   // console.log(user);
 }); */
@@ -37,6 +39,11 @@ function navigateTo(hash) {
     root.appendChild(route.component(navigateTo));
   }
 }
+
+
+
+
+
 
 navigateTo(window.location.pathname);
 
