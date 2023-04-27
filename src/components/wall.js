@@ -10,17 +10,21 @@ function wall(navigateTo) {
   navWall.id = 'navWall';
 
   const signOutBtn = document.createElement('button');
-  signOutBtn.textContent = 'Cerrar Sesión';
+  signOutBtn.textContent = 'CERRAR SESIÓN';
   signOutBtn.id = 'signOutBtn';
+  const cineMatchtitle = document.createElement('h1');
+  cineMatchtitle.textContent = 'CINE MATCH';
+  cineMatchtitle.id = 'titleWall';
   const logo = document.createElement('img');
   logo.className = 'logoWall';
-  logo.src = '/img/logo.png';
+  logo.src = '/img/logopost.png';
 
-  navWall.append(logo, signOutBtn);
+  navWall.append(logo, cineMatchtitle, signOutBtn);
 
   const sectionWall = document.createElement('section');
   const divCreatePost = document.createElement('div');
   const divImgComent = document.createElement('div');
+  
   const imgPost = document.createElement('img');
   const txtPost = document.createElement('textarea');
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
@@ -59,7 +63,7 @@ function wall(navigateTo) {
     });
   });
 
-// Evento que cierra sesión
+  // Evento que cierra sesión
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);
     navigateTo('/');

@@ -28,7 +28,6 @@ export const auth = getAuth(app);
 
 // Initialize Cloud Firestore and get a reference to the service
 
-
 // console.log(db.length);
 
 // db.forEach((element) => {
