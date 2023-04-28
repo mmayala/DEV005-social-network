@@ -50,6 +50,14 @@ function register(navigateTo) {
   const spanMessage = document.createElement('span');
   spanMessage.id = 'messageError';
 
+  const returnLogin = document.createElement('p');
+  returnLogin.textContent = '¿Ya tienes una cuenta?   ';
+
+  const registerLink = document.createElement('a');
+  registerLink.innerHTML = 'Inicia Sesión';
+  registerLink.href = '';
+  returnLogin.appendChild(registerLink);
+
   const btnRegister = document.createElement('button');
   btnRegister.textContent = 'REGISTRARSE';
   btnRegister.type = 'submit';
@@ -65,11 +73,19 @@ function register(navigateTo) {
     labelConfirm,
     confirm,
     spanMessage,
+    returnLogin,
     btnRegister,
   );
 
   sectionDatos.append(formRegister);
   divRegister.append(sectionLogo, sectionDatos);
+
+  // Evento para regresar a la vista principal login
+
+  const backreturn = divRegister.querySelector('a');
+  backreturn.addEventListener('click', () => {
+    navigateTo('/');
+  });
 
   const signupForm = divRegister.querySelector('#register_form');
   // console.log(signupForm);

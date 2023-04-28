@@ -43,7 +43,16 @@ function wall(navigateTo) {
 
   divWall.append(navWall, sectionWall);
 
-  //
+  // Ajustar tamano de textarea para post
+  /* const area = divWall.querySelectorAll('article');
+
+  window.addEventListener('DOMContentLoaded', () => {
+    area.forEach((elemento) => {
+      elemento.style.height = `${elemento.scrollHeight}px`;
+    });
+  }); */
+
+  // Evento para publicar Post
   divWall.querySelector('#buttonPost').addEventListener('click', () => {
     const comment = divWall.querySelector('#texPost');
     addPost(comment.value);
@@ -51,19 +60,19 @@ function wall(navigateTo) {
     // console.log('comment');
   });
 
-  window.addEventListener('DOMContentLoaded', () => {
-    // console.log(postSnapshot);
-    paintRealTime((postSnapshot) => {
-      postSection.textContent = '';
-      postSnapshot.forEach((doc) => {
-        // console.log('data:', doc.data());
-        const post = document.createElement('textarea');
-        post.readOnly = 'false';
-        post.value = doc.data().comment;
-        postSection.append(post);
-      });
+  // window.addEventListener('DOMContentLoaded', () => {
+  // console.log(postSnapshot);
+  paintRealTime((postSnapshot) => {
+    postSection.textContent = '';
+    postSnapshot.forEach((doc) => {
+      // console.log('data:', doc.data());
+      const post = document.createElement('li');
+      post.readOnly = 'false';
+      post.value = doc.data().comment;
+      postSection.append(post);
     });
   });
+  // });
 
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);

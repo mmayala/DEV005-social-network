@@ -164,19 +164,16 @@ a {
 }
 
 
-#wallContainer article textarea{
+li{
   resize: none;
   width: 400px;
   height: 150px;
-  border-radius: 15px;
   margin-bottom: 10px;
   padding: 2%; 
   background-color: #D9D9D9;
   color: black;
   
-  
-  
-}
+}   
 
 #texPost{
   width: 400px;
@@ -236,4 +233,3 @@ a {
   margin: 0.5em 0.5em;
 }
 }
-
