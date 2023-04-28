@@ -1,9 +1,8 @@
-import { signOut, getAuth, onAuthStateChanged } from 'firebase/auth';
-//import { auth } from '../firebase.js';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
-//import { cargarWall } from '../main';
 
-function wall(navigateTo) {
+function wall() {
   const divWall = document.createElement('div');
   divWall.id = 'wallContainer';
 
@@ -11,7 +10,7 @@ function wall(navigateTo) {
   navWall.id = 'navWall';
 
   const signOutBtn = document.createElement('button');
-  signOutBtn.textContent = 'CERRAR SESIÓN';
+  signOutBtn.textContent = 'Cerrar Sesión';
   signOutBtn.id = 'signOutBtn';
 
   const cineMatchtitle = document.createElement('h1');
@@ -20,18 +19,17 @@ function wall(navigateTo) {
 
   const logo = document.createElement('img');
   logo.className = 'logoWall';
-  logo.src = '/img/logopost.png';
+  logo.src = '/img/logo.png';
 
   navWall.append(logo, cineMatchtitle, signOutBtn);
 
   const sectionWall = document.createElement('section');
   const divCreatePost = document.createElement('div');
   const divImgComent = document.createElement('div');
-
   const imgPost = document.createElement('img');
   const txtPost = document.createElement('textarea');
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
-  txtPost.id = 'textPost';
+  txtPost.id = 'texPost';
   const buttonPost = document.createElement('button');
   buttonPost.textContent = 'Publicar';
   buttonPost.id = 'buttonPost';
@@ -50,51 +48,40 @@ function wall(navigateTo) {
     const comment = divWall.querySelector('#texPost');
     addPost(comment.value);
     comment.value = '';
-    // console.log('comment');
+  });
+  paintRealTime((postSnapshot) => {
+    postSection.textContent = '';
+    postSnapshot.forEach((doc) => {
+      // console.log('data:', doc.data());
+      const post = document.createElement('div');
+      post.innerHTML = doc.data().comment;
+      post.className = 'createdPost';
+
+      const btnEdit = document.createElement('button');
+      btnEdit.className = 'btnEdit';
+      btnEdit.textContent = 'Editar';
+
+      const btnDelet = document.createElement('button');
+      btnDelet.className = 'btnDelet';
+      btnDelet.textContent = 'Eliminar';
+
+      postSection.append(post, btnEdit, btnDelet);
+    });
   });
 
-  // User is signed in
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      //cargarWall();
-      // const signedIn = userSignedIn();
-      // console.log(signedIn);
-      // if (signedIn === true) {
-      console.log('el usuario ha iniciado sesion en el wall');
-      console.log(user)
-      // window.addEventListener('DOMContentLoaded', () => {
-      // console.log(postSnapshot);
-      paintRealTime((postSnapshot) => {
-        postSection.textContent = '';
-        postSnapshot.forEach((doc) => {
-          // console.log('data:', doc.data());
-          const post = document.createElement('textarea');
-          post.readOnly = 'false';
-          post.value = doc.data().comment;
-          postSection.append(post);
-        });
-      });
-      // });
-
-      signOutBtn.addEventListener('click', async () => {
-        await signOut(auth);
-        // console.log('logOut');
-        navigateTo('/');
-      });
-
-      return divWall;
-    }else{
-      alert('Requiere inicio de sesión');
-      navigateTo('/');
+  postSection.addEventListener('click', (e) => {
+    if (e.target.className === 'btnEdit') {
+      const padre = e.target.parentNode.textContent;
+      //const caja=e.target.parentNode.clase
+            
+      console.log(padre);
     }
-  
+    console.log(e.target.className);
+  });
+  signOutBtn.addEventListener('click', async () => {
+    await signOut(auth);
   });
 
-  // }else{
-  //   alert('Requiere inicio de sesión');
-  //   navigateTo('/');
-  // }
+  return divWall;
 }
-
 export default wall;
