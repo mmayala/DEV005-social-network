@@ -26,11 +26,11 @@ function wall(navigateTo) {
   const sectionWall = document.createElement('section');
   const divCreatePost = document.createElement('div');
   const divImgComent = document.createElement('div');
-  
+
   const imgPost = document.createElement('img');
   const txtPost = document.createElement('textarea');
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
-  txtPost.id = 'texPost';
+  txtPost.id = 'textPost';
   const buttonPost = document.createElement('button');
   buttonPost.textContent = 'Publicar';
   buttonPost.id = 'buttonPost';
@@ -52,17 +52,14 @@ function wall(navigateTo) {
     // console.log('comment');
   });
 
-  window.addEventListener('DOMContentLoaded', () => {
-    // console.log(postSnapshot);
-    paintRealTime((postSnapshot) => {
-      postSection.textContent = '';
-      postSnapshot.forEach((doc) => {
-        // console.log('data:', doc.data());
-        const post = document.createElement('textarea');
-        post.readOnly = 'false';
-        post.value = doc.data().comment;
-        postSection.append(post);
-      });
+  paintRealTime((postSnapshot) => {
+    postSection.textContent = '';
+    postSnapshot.forEach((doc) => {
+      // console.log('data:', doc.data());
+      const post = document.createElement('div');
+      post.innerHTML = doc.data().comment;
+      post.className = 'createdPost';
+      postSection.append(post);
     });
   });
 

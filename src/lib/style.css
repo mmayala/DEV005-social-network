@@ -126,8 +126,6 @@ a {
   font-size: 15px;
 }
 
-
-
 /*Wall*/
 #navWall {
   display: flex;
@@ -156,29 +154,24 @@ a {
   min-height: 100vh;
 }
 
-#wallContainer section , article{
-  display: flex;
+.postArticle {
+  display: grid;
   flex-direction: column;
-  align-items: center;
   margin: 2em 0;
+  justify-content: center;
+  min-width: 80%;
+  height: auto;
 }
 
-
-#wallContainer article textarea{
-  resize: none;
-  width: 400px;
-  height: 150px;
+.createdPost {
+  width: 800px;
+  background-color: crimson;
+  margin-bottom: 15px;
+  padding: 15px;
   border-radius: 15px;
-  margin-bottom: 10px;
-  padding: 2%; 
-  background-color: #D9D9D9;
-  color: black;
-  
-  
-  
 }
 
-#texPost{
+#textPost{
   width: 400px;
   height: 100px;
   resize: none;
@@ -236,5 +229,5 @@ a {
 .imgGoogle {
   margin: 0.5em 0.5em;
 }
-}
+} 
 
