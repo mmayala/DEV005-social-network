@@ -97,6 +97,7 @@ function login(navigateTo) {
       const credentials = await signIn();
       // console.log(credentials);
       navigateTo('/wall');
+      // eslint-disable-next-line no-alert
       alert(`Bienvenido ${credentials.user.displayName}`);
     } catch (error) {
       //  console.log(error);

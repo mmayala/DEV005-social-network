@@ -72,8 +72,6 @@ function wall() {
   postSection.addEventListener('click', (e) => {
     if (e.target.className === 'btnEdit') {
       const padre = e.target.parentNode.textContent;
-      //const caja=e.target.parentNode.clase
-            
       console.log(padre);
     }
     console.log(e.target.className);
