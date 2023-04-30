@@ -1,32 +1,18 @@
-// Este es el punto de entrada de tu aplicacion
-// import { onAuthStateChanged } from 'firebase/auth';
-
-// import { myFunction } from './lib/index.js';
-// import { auth } from './firebase.js';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase.js';
 import login from './components/login.js';
 import register from './components/register.js';
-import wall from './components/wall.js';
-
-
-// import './lib/registerForm.js';
-
-// import { async } from 'regenerator-runtime';
-// import { signin } from './components/signin.js';
-/* onAuthStateChanged(auth, async (user) => {
-  // console.log(user);
-}); */
-const init = () => {
-  document.getElementById('root').append(wall());
-};
-window.onload = init();
+import muro from './components/muro.js';
+import error from './components/error.js';
 
 const routes = [
   { path: '/', component: login },
   { path: '/register', component: register },
-  { path: '/wall', component: wall },
+  { path: '/muro', component: muro },
+  { path: '/error', component: error },
 ];
 
-// const defaultRoute = '/';
+const defaultRoute = '/';
 
 const root = document.getElementById('root');
 
@@ -39,26 +25,17 @@ function navigateTo(hash) {
       window.location.origin + route.path,
     );
     root.innerHTML = '';
-    root.appendChild(route.component(navigateTo));
+    root.append(route.component(navigateTo));
+  } else {
+    navigateTo('/error');
   }
 }
 
-
-
-
-
-
-navigateTo(window.location.pathname);
-
-// myFunction();
-
-// const postSnapshot = await getDocs(collection(db, 'Post'));
-// const data = postSnapshot.docs;
-// data.forEach((doc) => {
-//   const post = doc.data();
-//   console.log(post);
-// });
-
-// console.log(app);
-// console.log(analytics);
-// console.log(auth);
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    navigateTo('/muro');
+  } else if (window.location.pathname === '/muro' && user == null) {
+    navigateTo(defaultRoute);
+  }
+  navigateTo(window.location.pathname || defaultRoute);
+});

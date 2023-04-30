@@ -114,10 +114,6 @@ function login(navigateTo) {
     const result = await signInWithCredentials(emailLogin, passwordLogin);
 
     spanMessage.textContent = result.message;
-
-    if (result.ok) {
-      navigateTo('/wall');
-    }
   });
 
   return divLogin;
