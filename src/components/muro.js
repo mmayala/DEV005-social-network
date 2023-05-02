@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
 
-function wall() {
+function wall(navigateTo) {
   const divWall = document.createElement('div');
   divWall.id = 'wallContainer';
 
@@ -10,7 +10,7 @@ function wall() {
   navWall.id = 'navWall';
 
   const signOutBtn = document.createElement('button');
-  signOutBtn.textContent = 'Cerrar Sesión';
+  signOutBtn.textContent = 'CERRAR SESIÓN';
   signOutBtn.id = 'signOutBtn';
 
   const cineMatchtitle = document.createElement('h1');
@@ -19,20 +19,27 @@ function wall() {
 
   const logo = document.createElement('img');
   logo.className = 'logoWall';
-  logo.src = '/img/logo.png';
+  logo.src = '/img/logopost.png';
 
   navWall.append(logo, cineMatchtitle, signOutBtn);
 
   const sectionWall = document.createElement('section');
+  sectionWall.id = 'sectionWall';
+
   const divCreatePost = document.createElement('div');
+
   const divImgComent = document.createElement('div');
+
   const imgPost = document.createElement('img');
+
   const txtPost = document.createElement('textarea');
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
   txtPost.id = 'texPost';
+
   const buttonPost = document.createElement('button');
   buttonPost.textContent = 'Publicar';
   buttonPost.id = 'buttonPost';
+
   const postSection = document.createElement('article');
   postSection.className = 'postArticle';
 
@@ -49,6 +56,7 @@ function wall() {
     addPost(comment.value);
     comment.value = '';
   });
+
   paintRealTime((postSnapshot) => {
     postSection.textContent = '';
     postSnapshot.forEach((doc) => {
@@ -78,6 +86,7 @@ function wall() {
   });
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);
+    navigateTo('/');
   });
 
   return divWall;
