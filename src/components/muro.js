@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
+import { detelePost } from '../firestore.js';
 
 function wall() {
   const divWall = document.createElement('div');
@@ -51,33 +52,33 @@ function wall() {
   });
   paintRealTime((postSnapshot) => {
     postSection.textContent = '';
+    let nameClass = 0;
     postSnapshot.forEach((doc) => {
+      nameClass += 1;
       // console.log('data:', doc.data());
       const post = document.createElement('div');
       post.innerHTML = doc.data().comment;
-      post.className = 'createdPost';
+      post.className = `createdPost${nameClass}`;
 
       const btnEdit = document.createElement('button');
-      btnEdit.className = 'btnEdit';
+      btnEdit.className = `btnEdit${nameClass}`;
       btnEdit.textContent = 'Editar';
 
       const btnDelet = document.createElement('button');
       btnDelet.className = 'btnDelet';
       btnDelet.textContent = 'Eliminar';
+      btnDelet.setAttribute('data-id', `${doc.id}`);
 
       postSection.append(post, btnEdit, btnDelet);
     });
   });
 
-  postSection.addEventListener('click', (e) => {
-    if (e.target.className === 'btnEdit') {
-      const padre = e.target.parentNode.textContent;
-      //const caja=e.target.parentNode.clase
-            
-      console.log(padre);
-    }
-    console.log(e.target.className);
-  });
+  const btnsDelete = postSection.querySelectorAll('.btnDelet');
+  btnsDelete.forEach(btn =>{
+    btnsDelete.addEventListener('click', (e) => {}
+  )};
+  
+
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);
   });
