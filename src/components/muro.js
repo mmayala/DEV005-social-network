@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
-import { detelePost } from '../firestore.js';
+import { deletePost } from '../firestore.js';
 
 function wall() {
   const divWall = document.createElement('div');
@@ -52,32 +52,49 @@ function wall() {
   });
   paintRealTime((postSnapshot) => {
     postSection.textContent = '';
-    let nameClass = 0;
     postSnapshot.forEach((doc) => {
-      nameClass += 1;
-      // console.log('data:', doc.data());
       const post = document.createElement('div');
-      post.innerHTML = doc.data().comment;
-      post.className = `createdPost${nameClass}`;
+      post.className = 'createdPost';
+
+      const postComment = document.createElement('p');
+      postComment.innerHTML = doc.data().comment;
+      postComment.className = 'comment';
 
       const btnEdit = document.createElement('button');
-      btnEdit.className = `btnEdit${nameClass}`;
+      btnEdit.className = 'btnEdit';
       btnEdit.textContent = 'Editar';
+      btnEdit.setAttribute('data-id', `${doc.id}`);
+
+      const btnSave = document.createElement('button');
+      btnSave.className = 'btnSave';
+      btnSave.textContent = 'Guardar cambios';
+      btnSave.style.display = 'none';
+      btnSave.setAttribute('data-id', `${doc.id}`);
 
       const btnDelet = document.createElement('button');
       btnDelet.className = 'btnDelet';
       btnDelet.textContent = 'Eliminar';
       btnDelet.setAttribute('data-id', `${doc.id}`);
 
-      postSection.append(post, btnEdit, btnDelet);
+      post.append(postComment, btnEdit, btnSave, btnDelet);
+
+      postSection.append(post);
+    });
+    // Delete post
+    const btnsDelete = postSection.querySelectorAll('.btnDelet');
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        deletePost(e.target.dataset.id);
+      });
+    });
+    // Edit Post
+    const btnsEdit = postSection.querySelectorAll('.btnEdit');
+    btnsEdit.forEach((btnEdit) => {
+      btnEdit.addEventListener('click', (e) => {
+        console.log(e.target.dataset.id);
+      });
     });
   });
-
-  const btnsDelete = postSection.querySelectorAll('.btnDelet');
-  btnsDelete.forEach(btn =>{
-    btnsDelete.addEventListener('click', (e) => {}
-  )};
-  
 
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);
