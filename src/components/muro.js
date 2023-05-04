@@ -1,6 +1,10 @@
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
+import { deletePost, getPost, updatePost } from '../firestore.js';
+
+let editStatus = false;
+let id = '';
 
 function wall() {
   const divWall = document.createElement('div');
@@ -29,7 +33,7 @@ function wall() {
   const imgPost = document.createElement('img');
   const txtPost = document.createElement('textarea');
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
-  txtPost.id = 'texPost';
+  txtPost.id = 'textPost';
   const buttonPost = document.createElement('button');
   buttonPost.textContent = 'Publicar';
   buttonPost.id = 'buttonPost';
@@ -49,35 +53,85 @@ function wall() {
     addPost(comment.value);
     comment.value = '';
   });
+
   paintRealTime((postSnapshot) => {
     postSection.textContent = '';
     postSnapshot.forEach((doc) => {
-      // console.log('data:', doc.data());
       const post = document.createElement('div');
-      post.innerHTML = doc.data().comment;
       post.className = 'createdPost';
+
+      const postComment = document.createElement('p');
+      postComment.innerHTML = doc.data().comment;
+      postComment.className = 'comment';
+
+      const textArea = document.createElement('textarea');
+      textArea.className = 'textAreaEdit';
+      textArea.setAttribute('data-id', `${doc.id}`);
+      textArea.style.display = 'none';
 
       const btnEdit = document.createElement('button');
       btnEdit.className = 'btnEdit';
       btnEdit.textContent = 'Editar';
+      btnEdit.setAttribute('data-id', `${doc.id}`);
+
+      const btnSave = document.createElement('button');
+      btnSave.className = 'btnSave';
+      btnSave.textContent = 'Guardar cambios';
+      btnSave.style.display = 'none';
+      btnSave.setAttribute('data-id', `${doc.id}`);
 
       const btnDelet = document.createElement('button');
       btnDelet.className = 'btnDelet';
       btnDelet.textContent = 'Eliminar';
+      btnDelet.setAttribute('data-id', `${doc.id}`);
 
-      postSection.append(post, btnEdit, btnDelet);
+      post.append(postComment, textArea, btnEdit, btnSave, btnDelet);
+
+      postSection.append(post);
+    });
+    // Delete post
+    const btnsDelete = postSection.querySelectorAll('.btnDelet');
+    btnsDelete.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        deletePost(e.target.dataset.id);
+      });
+    });
+    // Edit Post
+    const btnsEdit = postSection.querySelectorAll('.btnEdit');
+    const btnSaveEdit = postSection.querySelector('.btnSave');
+
+    btnsEdit.forEach((btnEdit) => {
+      btnEdit.addEventListener('click', async (e) => {
+        const doc = await getPost(e.target.dataset.id);
+        const paragraphPost = postSection.querySelector('.comment');
+        const txtArea = postSection.querySelector(`[data-id="${doc.id}"]`);
+        console.log(txtArea);
+
+        const btnEditTxt = postSection.querySelector('.btnEdit');
+        const post = doc.data();
+        btnEditTxt.style.display = 'none';
+        btnSaveEdit.style.display = 'block';
+        paragraphPost.style.display = 'none';
+        txtArea.value = post.comment;
+        txtArea.style.display = 'block';
+        editStatus = true;
+        id = e.target.dataset.id;
+        console.log(id);
+      });
+      const txtArea = postSection.querySelector('.textAreaEdit');
+      btnSaveEdit.addEventListener('click', () => {
+        if (!editStatus) {
+          addPost(txtArea.value);
+        } else {
+          updatePost(id, {
+            txtArea: txtArea.value,
+          });
+          editStatus = false;
+        }
+      });
     });
   });
 
-  postSection.addEventListener('click', (e) => {
-    if (e.target.className === 'btnEdit') {
-      const padre = e.target.parentNode.textContent;
-      //const caja=e.target.parentNode.clase
-            
-      console.log(padre);
-    }
-    console.log(e.target.className);
-  });
   signOutBtn.addEventListener('click', async () => {
     await signOut(auth);
   });

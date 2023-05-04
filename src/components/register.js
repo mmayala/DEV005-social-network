@@ -88,7 +88,7 @@ function register(navigateTo) {
         emailInput,
         passwordInput,
       );
-      navigateTo('/wall');
+      navigateTo('/muro');
       // console.log(userCredentials);
     } catch (error) {
       //  console.log(error.message);

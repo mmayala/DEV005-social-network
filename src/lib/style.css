@@ -1,14 +1,13 @@
 * {
   margin: 0px;
+  box-sizing: border-box;
 }
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 16px;
   color: white;
 }
-#backgroundImg {
-  position: absolute;
-  width: 100%;
+html {
   height: 100%;
 }
 #loginContainer,
@@ -23,7 +22,6 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
   padding: 50px;
-  box-sizing: border-box;
 }
 .sectionLogo {
   text-align: center;
@@ -35,16 +33,11 @@ body {
   height: auto;
   margin: 2em;
 }
-h3 {
+.textWelcome {
   font-size: larger;
 }
 .sectionDatos {
   background-color: rgba(255, 255, 255, 0.3);
-  padding: 2.5em;
-  border-radius: 1em;
-  flex: 1;
-  margin:0px 10%;
-  min-width: 300px;
 }
 .sectionDatos label {
   font-weight: bold;
@@ -63,10 +56,8 @@ h3 {
   border-radius: 15px;
   padding-left: 10px;
 }
-html {
-  height: 100%;
-}
-button {
+#btnLogin,
+#btn-Register {
   width: 100%;
   height: 3em;
   border: none;
@@ -76,18 +67,16 @@ button {
   color: white;
   font-weight: bold;
   display: block;
+  margin-bottom: 20px;
 }
-p {
+.question {
   text-align: center;
   margin-bottom: 8px;
   font-weight: bold;
   color: #29193E;
 }
-a {
+.link {
   color: white;
-}
-#btnLogin{
-  margin-bottom: 20px;
 }
 .btnGoogle {
   display: inline-flex;
@@ -108,67 +97,79 @@ a {
   font-size: 15px;
 }
 /*Wall*/
-#navWall {
-  display: flex;
-  background-color: #A31721;
-  height: 12vh;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.logoWall{
-  height: 80%;
-}
-#titleWall{
-  font-size: 50px;
-}
-#signOutBtn{
-  width: 100px;
-}
 #wallContainer {
   background-image: url(/img/fondo_wall.png);
   background-repeat: repeat;
   min-height: 100vh;
 }
+#navWall {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #A31721;
+  height: 6vw;
+  width: 100%;
+  padding: 0 10%;
+}
+#signOutBtn {
+  height: 50%;
+  width: 150px;
+  font-size: 18px;
+  margin-left: auto;
+}
+#titleWall{
+  font-size: 50px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.logoWall{
+  height: 80%;
+}
+.toCreatePost{
+  padding: 2.5em 20em;
+  min-width: 500px;
+}
+#buttonPost, .btnEdit, .btnSave, .btnDelet {
+  width: 20%;
+  height: 3em;
+  border: none;
+  border-radius: 15px;
+  margin-top: 1em;
+  background-color: #29193E;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 883px;
+  justify-content: space-around;
+  align-items: center;
+}
 .postArticle {
+  padding: 2.5em 20em;
+  min-width: 500px;
+}
+/* .postArticle {
   display: grid;
   flex-direction: column;
   margin: 2em 0;
   justify-content: center;
   min-width: 80%;
   height: auto;
-}
-<<<<<<< HEAD
-
-
-li{
-  resize: none;
-  width: 400px;
-  height: 150px;
-  margin-bottom: 10px;
-  padding: 2%; 
-  background-color: #D9D9D9;
-  color: black;
-  
-}   
-
-#texPost{
-=======
-.createdPost {
-  width: 800px;
-  background-color: crimson;
+} */
+.comment{
+  width: 100%;
+  background-color: gray;
   margin-bottom: 15px;
   padding: 15px;
   border-radius: 15px;
 }
-#textPost{
->>>>>>> 50c6802c8fdca8082dbc9fb89cbc094636b9e8ae
-  width: 400px;
+#textPost,
+.textAreaEdit{
+  width: 100%;
   height: 100px;
   resize: none;
   border-radius: 15px;
   box-shadow:  0 5px 0 rgb(161, 155, 155);
-  padding: 2%;
+  padding: 1%;
 }
 @media only screen and (orientation: portrait) {
   #loginContainer{
@@ -212,5 +213,25 @@ li{
 }
 .imgGoogle {
   margin: 0.5em 0.5em;
+}
+/*wall*/
+#wallContainer {
+  min-height: auto;
+  background-size: cover;
+}
+#navWall {
+  height: 6vh;
+}
+#titleWall{
+  font-size: 20px;
+}
+#sectionWall{
+  padding: 2.5em;
+  min-width: 350px;
+}
+.postArticle {
+  padding: 1em;
+  min-width: 300px;
+  margin-bottom: 15px;
 }
 }
