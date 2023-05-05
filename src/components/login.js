@@ -12,6 +12,7 @@ function login(navigateTo) {
   logo.src = '/img/logo.png';
 
   const textWelcome = document.createElement('h3');
+  textWelcome.className = 'textWelcome';
   textWelcome.textContent = 'Aquí encontrarás opiniones y recomendaciones de las mejores películas';
   sectionLogo.append(logo, textWelcome);
 
@@ -46,15 +47,18 @@ function login(navigateTo) {
   btnLogin.id = 'btnLogin';
 
   const register = document.createElement('p');
+  register.className = 'question';
   register.textContent = '¿No tienes una cuenta?   ';
 
   const registerLink = document.createElement('a');
+  registerLink.className = 'link';
   registerLink.innerHTML = 'Registrate aquí';
   registerLink.href = '';
   register.appendChild(registerLink);
 
   const o = document.createElement('p');
   o.textContent = 'o';
+  o.className = 'question';
 
   const btnGoogle = document.createElement('div');
   btnGoogle.className = 'btnGoogle';
@@ -96,7 +100,8 @@ function login(navigateTo) {
     try {
       const credentials = await signIn();
       // console.log(credentials);
-      navigateTo('/wall');
+      navigateTo('/muro');
+      // eslint-disable-next-line no-alert
       alert(`Bienvenido ${credentials.user.displayName}`);
     } catch (error) {
       //  console.log(error);
