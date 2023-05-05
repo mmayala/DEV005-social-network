@@ -24,7 +24,7 @@ describe('register', () => {
     document.body.innerHTML = '<div id="root"></div>';
     const DOM = document.getElementById('root');
     DOM.append(mockRegister());
-    console.log('ver el DOM: ', DOM.textContent);
+    // console.log('ver el DOM: ', DOM.textContent);
     // const haveabutton = DOM.querySelector('btn-Register');
     // console.log('****************', haveabutton);
     // expect(haveabutton).not.toBe(null);
@@ -34,9 +34,9 @@ describe('register', () => {
     document.body.innerHTML = '<div id="root"></div>';
     const DOM = document.getElementById('root');
     DOM.append(register());
-    console.log('ver con Register: ', document.getElementById('btn-Register'));
+    // console.log('ver con Register: ', document.getElementById('btn-Register'));
     const haveabutton = document.getElementById('btn-Register');
-    console.log('****************', haveabutton);
+    // console.log('****************', haveabutton);
     expect(haveabutton).not.toBe(null);
   });
 });
@@ -45,9 +45,9 @@ describe('Button Google', () => {
   test('login with google call function navigateTo', () => {
     const DOM = document.createElement('div');
     DOM.append(register());
-    console.log('ver con Register: ', document.getElementById('btn-Register'));
+    // console.log('ver con Register: ', document.getElementById('btn-Register'));
     const haveabutton = document.getElementById('btn-Register');
-    console.log('****************', haveabutton);
+    // console.log('****************', haveabutton);
     expect(haveabutton).not.toBe(null);
   });
 });
