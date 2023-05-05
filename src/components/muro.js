@@ -1,14 +1,15 @@
 import { signOut } from 'firebase/auth';
+import { async } from 'regenerator-runtime';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
 import
 {
-  deletePost, getPost, updatePost, like,
+  deletePost, getPost, updatePost, like, dislike,
 } from '../firestore.js';
 
 let editStatus = false;
 let id = '';
-let heart = '';
+let email = '';
 
 function wall() {
   const divWall = document.createElement('div');
@@ -77,9 +78,14 @@ function wall() {
       btnDelet.setAttribute('data-id', `${doc.id}`);
 
       const likes = document.createElement('i');
-      likes.className = 'bi bi-heart-fill';
+      likes.className = 'bi bi-heart-fill btnlikes';
+      likes.setAttribute('data-id', `${doc.id}`);
 
-      post.append(postComment, textArea, likes, btnEdit, btnSave, btnDelet);
+      const cantLikes = document.createElement('p');
+      cantLikes.className = 'cantLikes';
+      cantLikes.setAttribute('data-id', `${doc.id}`);
+
+      post.append(postComment, textArea, likes, cantLikes, btnEdit, btnSave, btnDelet);
       postSection.append(post);
     });
     // Delete post
@@ -122,11 +128,44 @@ function wall() {
             editStatus = false;
           }
         });
-        heart = (auth.currentUser.email);
-        console.log(heart);
-        likes.addEventListener('click', () => {
+      });
+    });
+    // LIKES
+    const btnslikes = postSection.querySelectorAll('.btnlikes');
+    const contLike = function () {
+      btnslikes.forEach(async (btnlike) => {
+        const idLike = btnlike.dataset.id;
+        const doc = await getPost(idLike);
+        const cantidadLike = doc.data().likes.length;
 
-        });
+        const cantLikes = postSection.querySelector(`.cantLikes[data-id="${doc.id}"]`);
+        cantLikes.textContent = cantidadLike;
+      });
+      // console.log(doc);
+    };
+
+    contLike();
+
+    btnslikes.forEach((btnlike) => {
+      btnlike.addEventListener('click', async (e) => {
+        const doc = await getPost(e.target.dataset.id);
+        const cantLikes = postSection.querySelector(`.cantLikes[data-id="${doc.id}"]`);
+        const btnLikee = postSection.querySelector(`.btnlikes[data-id="${doc.id}"]`);
+        console.log(btnLikee);
+        id = e.target.dataset.id;
+        email = auth.currentUser.email;
+        const ifLike = doc.data().likes;
+        console.log(ifLike.length);
+        cantLikes.textContent = ifLike.length;
+        console.log(cantLikes);
+        if (!ifLike.includes(email)) {
+          console.log(email);
+          like(id, email);
+          contLike();
+          // btnLikee.style.color = 'red';
+        } else {
+          dislike(id, email);
+        }
       });
     });
   });
