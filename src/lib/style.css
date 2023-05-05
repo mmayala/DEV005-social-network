@@ -181,6 +181,12 @@ html {
 
 }
 
+.btnlikes, .cantLikes{
+display: inline-flex;
+margin: 5px;
+justify-content: left ;
+}
+
 .btnEdit, .btnSave {
   width: 20%;
   height: 3em;
