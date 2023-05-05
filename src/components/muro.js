@@ -2,10 +2,14 @@ import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
 import
-{ deletePost, getPost, updatePost } from '../firestore.js';
+{
+  deletePost, getPost, updatePost, like,
+} from '../firestore.js';
 
 let editStatus = false;
 let id = '';
+let heart = '';
+
 function wall() {
   const divWall = document.createElement('div');
   divWall.id = 'wallContainer';
@@ -44,6 +48,7 @@ function wall() {
     addPost(comment.value);
     comment.value = '';
   });
+
   paintRealTime((postSnapshot) => {
     postSection.textContent = '';
     postSnapshot.forEach((doc) => {
@@ -70,7 +75,11 @@ function wall() {
       btnDelet.className = 'btnDelet';
       btnDelet.textContent = 'ELIMINAR';
       btnDelet.setAttribute('data-id', `${doc.id}`);
-      post.append(postComment, textArea, btnEdit, btnSave, btnDelet);
+
+      const likes = document.createElement('i');
+      likes.className = 'bi bi-heart-fill';
+
+      post.append(postComment, textArea, likes, btnEdit, btnSave, btnDelet);
       postSection.append(post);
     });
     // Delete post
@@ -82,7 +91,7 @@ function wall() {
     });
     // Edit Post
     const btnsEdit = postSection.querySelectorAll('.btnEdit');
-  
+
     btnsEdit.forEach((btnEdit) => {
       btnEdit.addEventListener('click', async (e) => {
         const doc = await getPost(e.target.dataset.id);
@@ -101,18 +110,24 @@ function wall() {
         id = e.target.dataset.id;
         console.log(id);
 
-      // const txtArea = postSection.querySelector('.textAreaEdit');
+        // const txtArea = postSection.querySelector('.textAreaEdit');
         btnSaveEdit.addEventListener('click', () => {
+          const comment = txtArea.value;
           if (!editStatus) {
-            addPost(txtArea.value);
+            addPost(comment);
           } else {
-            updatePost(id, {
-              paragraphPost: txtArea.value,
-            });
+            // console.log(id, 9989);
+            // console.log(txtArea.value, 7787);
+            updatePost(id, { comment });
             editStatus = false;
           }
         });
-      });     
+        heart = (auth.currentUser.email);
+        console.log(heart);
+        likes.addEventListener('click', () => {
+
+        });
+      });
     });
   });
   signOutBtn.addEventListener('click', async () => {
