@@ -11,6 +11,7 @@ import {
   getDoc,
   updateDoc,
   arrayUnion,
+  arrayRemove,
 } from 'firebase/firestore';
 import { app } from './firebase.js';
 
@@ -25,5 +26,11 @@ export const like = (id, email) => {
   const postRef = doc(db, 'posts', `${id}`);
   updateDoc(postRef, {
     likes: arrayUnion(email),
+  });
+};
+export const dislike = (id, email) => {
+  const postRef = doc(db, 'posts', `${id}`);
+  updateDoc(postRef, {
+    likes: arrayRemove(email),
   });
 };
