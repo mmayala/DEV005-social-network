@@ -19,4 +19,4 @@ export { collection, addDoc, getDocs, onSnapshot, orderBy, query };
 
 export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
 export const getPost = (id) => getDoc(doc(db, 'posts', id));
-export const updatePost = (id, newComment) => updateDoc(doc(db, 'posts', id), newComment);
+export const updatePost = (id, comment) => updateDoc(doc(db, 'posts', id), comment);

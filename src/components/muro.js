@@ -82,7 +82,7 @@ function wall() {
     });
     // Edit Post
     const btnsEdit = postSection.querySelectorAll('.btnEdit');
-  
+
     btnsEdit.forEach((btnEdit) => {
       btnEdit.addEventListener('click', async (e) => {
         const doc = await getPost(e.target.dataset.id);
@@ -101,18 +101,16 @@ function wall() {
         id = e.target.dataset.id;
         console.log(id);
 
-      // const txtArea = postSection.querySelector('.textAreaEdit');
         btnSaveEdit.addEventListener('click', () => {
+          const comment = txtArea.value;
           if (!editStatus) {
             addPost(txtArea.value);
           } else {
-            updatePost(id, {
-              paragraphPost: txtArea.value,
-            });
+            updatePost(id, { comment });
             editStatus = false;
           }
         });
-      });     
+      });
     });
   });
   signOutBtn.addEventListener('click', async () => {
