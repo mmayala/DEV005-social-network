@@ -88,6 +88,7 @@ function wall() {
       post.append(postComment, textArea, likes, cantLikes, btnEdit, btnSave, btnDelet);
       postSection.append(post);
     });
+
     // Delete post
     const btnsDelete = postSection.querySelectorAll('.btnDelet');
     btnsDelete.forEach((btn) => {
@@ -143,7 +144,6 @@ function wall() {
       });
       // console.log(doc);
     };
-
     contLike();
 
     btnslikes.forEach((btnlike) => {
@@ -151,17 +151,19 @@ function wall() {
         const doc = await getPost(e.target.dataset.id);
         const cantLikes = postSection.querySelector(`.cantLikes[data-id="${doc.id}"]`);
         const btnLikee = postSection.querySelector(`.btnlikes[data-id="${doc.id}"]`);
+
         console.log(btnLikee);
         id = e.target.dataset.id;
         email = auth.currentUser.email;
         const ifLike = doc.data().likes;
-        console.log(ifLike.length);
+        // console.log(ifLike.length);
         cantLikes.textContent = ifLike.length;
         console.log(cantLikes);
         if (!ifLike.includes(email)) {
           console.log(email);
           like(id, email);
           contLike();
+
           // btnLikee.style.color = 'red';
         } else {
           dislike(id, email);
