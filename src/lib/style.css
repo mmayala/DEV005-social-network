@@ -178,13 +178,20 @@ html {
   font-weight: bold;
   margin-bottom: 20px;
   margin-left: 80%;
-
 }
 
-.btnlikes, .cantLikes{
+.btnlikes{
 display: inline-flex;
 margin: 5px;
 justify-content: left ;
+color: #A31721;
+}
+
+.cantLikes{
+  display: inline-flex;
+margin: 5px;
+justify-content: left ;
+color: #29193E;
 }
 
 .btnEdit, .btnSave {
@@ -274,7 +281,6 @@ justify-content: left ;
 .imgGoogle {
   margin: 0.5em 0.5em;
 }
-
 
 /*wall*/
 #wallContainer {
