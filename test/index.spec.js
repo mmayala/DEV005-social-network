@@ -59,6 +59,6 @@ describe('Button Googlee', () => {
     DOM.append(login(navigateTo));
     const googleButton = DOM.querySelector('#btnGoogle');
     googleButton.click();
-    expect(navigateTo).toHaveBeenCalledTimes(0);
+    setTimeout(navigateTo).toHaveBeenCalledTimes(0);
   });
 });

@@ -88,7 +88,6 @@ function wall() {
       post.append(postComment, textArea, likes, cantLikes, btnEdit, btnSave, btnDelet);
       postSection.append(post);
     });
-
     // Delete post
     const btnsDelete = postSection.querySelectorAll('.btnDelet');
     btnsDelete.forEach((btn) => {
@@ -134,7 +133,7 @@ function wall() {
     // LIKES
     const btnslikes = postSection.querySelectorAll('.btnlikes');
     const contLike = function () {
-      btnslikes.forEach(async (btnlike) => {
+      btnslikes.forEach(async(btnlike) => {
         const idLike = btnlike.dataset.id;
         const doc = await getPost(idLike);
         const cantidadLike = doc.data().likes.length;
@@ -144,26 +143,29 @@ function wall() {
       });
       // console.log(doc);
     };
+
     contLike();
 
     btnslikes.forEach((btnlike) => {
       btnlike.addEventListener('click', async (e) => {
         const doc = await getPost(e.target.dataset.id);
+        console.log(doc);
         const cantLikes = postSection.querySelector(`.cantLikes[data-id="${doc.id}"]`);
+        console.log(cantLikes);
         const btnLikee = postSection.querySelector(`.btnlikes[data-id="${doc.id}"]`);
-
         console.log(btnLikee);
         id = e.target.dataset.id;
+        console.log(id);
         email = auth.currentUser.email;
+        console.log(email);
         const ifLike = doc.data().likes;
-        // console.log(ifLike.length);
+        console.log(ifLike);
         cantLikes.textContent = ifLike.length;
         console.log(cantLikes);
         if (!ifLike.includes(email)) {
           console.log(email);
           like(id, email);
           contLike();
-
           // btnLikee.style.color = 'red';
         } else {
           dislike(id, email);
