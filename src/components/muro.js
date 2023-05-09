@@ -10,6 +10,7 @@ import
 let editStatus = false;
 let id = '';
 let email = '';
+const likess = '';
 
 function wall() {
   const divWall = document.createElement('div');
@@ -46,7 +47,7 @@ function wall() {
   //
   divWall.querySelector('#buttonPost').addEventListener('click', () => {
     const comment = divWall.querySelector('#textPost');
-    addPost(comment.value);
+    addPost(comment.value, likess);
     comment.value = '';
   });
 
@@ -78,11 +79,16 @@ function wall() {
       btnDelet.setAttribute('data-id', `${doc.id}`);
 
       const likes = document.createElement('i');
-      likes.className = 'bi bi-heart-fill btnlikes';
       likes.setAttribute('data-id', `${doc.id}`);
+      if (doc.data().likes.includes(auth.currentUser.email)) {
+        likes.className = 'bi bi-heart-fill btnlikes';
+      } else {
+        likes.className = 'bi bi-heart btnlikes';
+      }
 
       const cantLikes = document.createElement('p');
       cantLikes.className = 'cantLikes';
+      cantLikes.innerHTML = doc.data().likes.length;
       cantLikes.setAttribute('data-id', `${doc.id}`);
 
       post.append(postComment, textArea, likes, cantLikes, btnEdit, btnSave, btnDelet);
@@ -132,40 +138,16 @@ function wall() {
     });
     // LIKES
     const btnslikes = postSection.querySelectorAll('.btnlikes');
-    const contLike = function () {
-      btnslikes.forEach(async(btnlike) => {
-        const idLike = btnlike.dataset.id;
-        const doc = await getPost(idLike);
-        const cantidadLike = doc.data().likes.length;
-
-        const cantLikes = postSection.querySelector(`.cantLikes[data-id="${doc.id}"]`);
-        cantLikes.textContent = cantidadLike;
-      });
-      // console.log(doc);
-    };
-
-    contLike();
 
     btnslikes.forEach((btnlike) => {
       btnlike.addEventListener('click', async (e) => {
-        const doc = await getPost(e.target.dataset.id);
-        console.log(doc);
-        const cantLikes = postSection.querySelector(`.cantLikes[data-id="${doc.id}"]`);
-        console.log(cantLikes);
-        const btnLikee = postSection.querySelector(`.btnlikes[data-id="${doc.id}"]`);
-        console.log(btnLikee);
         id = e.target.dataset.id;
-        console.log(id);
+        const doc = await getPost(id);
         email = auth.currentUser.email;
         console.log(email);
         const ifLike = doc.data().likes;
-        console.log(ifLike);
-        cantLikes.textContent = ifLike.length;
-        console.log(cantLikes);
         if (!ifLike.includes(email)) {
-          console.log(email);
           like(id, email);
-          contLike();
           // btnLikee.style.color = 'red';
         } else {
           dislike(id, email);

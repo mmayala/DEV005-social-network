@@ -5,9 +5,9 @@ import {
 
 const postCollection = collection(db, 'posts');
 
-export const addPost = (comment) => {
+export const addPost = (comment, likes) => {
   addDoc(postCollection, {
-    comment,
+    comment, likes,
   });
 };
 export const postSnapshot = getDocs(postCollection);
