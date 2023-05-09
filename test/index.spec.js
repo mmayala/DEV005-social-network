@@ -53,12 +53,13 @@ describe('Button Google', () => {
 });
 
 describe('Button Googlee', () => {
-  test('login with google call function navigateTo', () => {
+  test('login with google call function navigateTo', (done) => {
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
     DOM.append(login(navigateTo));
     const googleButton = DOM.querySelector('#btnGoogle');
     googleButton.click();
     expect(navigateTo).toHaveBeenCalledTimes(0);
+    setTimeout done;
   });
 });
