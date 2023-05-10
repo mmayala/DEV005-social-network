@@ -2,12 +2,12 @@
 import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase.js';
 
-export const signIn = function () {
+export function signIn() {
   const provider = new GoogleAuthProvider();
   return signInWithPopup(auth, provider);
-};
+}
 
-export const signInWithCredentials = async function (emailLogin, passwordLogin) {
+export async function signInWithCredentials(emailLogin, passwordLogin) {
   let result = false;
   let message = 'Algo va mal';
   try {
@@ -27,4 +27,4 @@ export const signInWithCredentials = async function (emailLogin, passwordLogin) 
     ok: result,
     message,
   };
-};
+}
