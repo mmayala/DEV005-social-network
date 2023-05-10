@@ -17,7 +17,9 @@ import { app } from './firebase.js';
 
 export const db = getFirestore(app);
 
-export { collection, addDoc, getDocs, onSnapshot, orderBy, query };
+export {
+  collection, addDoc, getDocs, onSnapshot, orderBy, query,
+};
 
 export const deletePost = (id) => deleteDoc(doc(db, 'posts', id));
 export const getPost = (id) => getDoc(doc(db, 'posts', id));
