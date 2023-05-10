@@ -1,5 +1,4 @@
-import { signOut } from 'firebase/auth';
-import { async } from 'regenerator-runtime';
+// import { signOut } from 'firebase/auth';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
 import
@@ -110,7 +109,6 @@ function wall() {
         const paragraphPost = postSection.querySelector(`.comment[data-id="${doc.id}"]`);
         const txtArea = postSection.querySelector(`.textAreaEdit[data-id="${doc.id}"]`);
         const btnSaveEdit = postSection.querySelector(`.btnSave[data-id="${doc.id}"]`);
-        console.log(txtArea);
         const btnEditTxt = postSection.querySelector(`.btnEdit[data-id="${doc.id}"]`);
         const post = doc.data();
         btnEditTxt.style.display = 'none';
@@ -120,16 +118,12 @@ function wall() {
         txtArea.style.display = 'block';
         editStatus = true;
         id = e.target.dataset.id;
-        console.log(id);
-
         // const txtArea = postSection.querySelector('.textAreaEdit');
         btnSaveEdit.addEventListener('click', () => {
           const comment = txtArea.value;
           if (!editStatus) {
             addPost(comment);
           } else {
-            // console.log(id, 9989);
-            // console.log(txtArea.value, 7787);
             updatePost(id, { comment });
             editStatus = false;
           }
@@ -144,7 +138,6 @@ function wall() {
         id = e.target.dataset.id;
         const doc = await getPost(id);
         email = auth.currentUser.email;
-        console.log(email);
         const ifLike = doc.data().likes;
         if (!ifLike.includes(email)) {
           like(id, email);
@@ -155,8 +148,8 @@ function wall() {
       });
     });
   });
-  signOutBtn.addEventListener('click', async () => {
-    await signOut(auth);
+  signOutBtn.addEventListener('click', () => {
+    auth.signOut();
   });
   return divWall;
 }
