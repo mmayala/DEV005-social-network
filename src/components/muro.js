@@ -1,5 +1,4 @@
 import { signOut } from 'firebase/auth';
-import { async } from 'regenerator-runtime';
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
 import
@@ -94,6 +93,7 @@ function wall() {
       post.append(postComment, textArea, likes, cantLikes, btnEdit, btnSave, btnDelet);
       postSection.append(post);
     });
+
     // Delete post
     const btnsDelete = postSection.querySelectorAll('.btnDelet');
     btnsDelete.forEach((btn) => {
@@ -101,6 +101,7 @@ function wall() {
         deletePost(e.target.dataset.id);
       });
     });
+
     // Edit Post
     const btnsEdit = postSection.querySelectorAll('.btnEdit');
 
@@ -110,7 +111,6 @@ function wall() {
         const paragraphPost = postSection.querySelector(`.comment[data-id="${doc.id}"]`);
         const txtArea = postSection.querySelector(`.textAreaEdit[data-id="${doc.id}"]`);
         const btnSaveEdit = postSection.querySelector(`.btnSave[data-id="${doc.id}"]`);
-        console.log(txtArea);
         const btnEditTxt = postSection.querySelector(`.btnEdit[data-id="${doc.id}"]`);
         const post = doc.data();
         btnEditTxt.style.display = 'none';
@@ -120,22 +120,19 @@ function wall() {
         txtArea.style.display = 'block';
         editStatus = true;
         id = e.target.dataset.id;
-        console.log(id);
 
-        // const txtArea = postSection.querySelector('.textAreaEdit');
         btnSaveEdit.addEventListener('click', () => {
           const comment = txtArea.value;
           if (!editStatus) {
             addPost(comment);
           } else {
-            // console.log(id, 9989);
-            // console.log(txtArea.value, 7787);
             updatePost(id, { comment });
             editStatus = false;
           }
         });
       });
     });
+
     // LIKES
     const btnslikes = postSection.querySelectorAll('.btnlikes');
 
@@ -147,7 +144,6 @@ function wall() {
         const ifLike = doc.data().likes;
         if (!ifLike.includes(email)) {
           like(id, email);
-          // btnLikee.style.color = 'red';
         } else {
           dislike(id, email);
         }
