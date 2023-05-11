@@ -1,4 +1,5 @@
 import { signIn, signInWithCredentials } from '../lib/loginService';
+import { imgLogo, imgLogoGoogle } from './imagenes.js';
 
 function login(navigateTo) {
   const divLogin = document.createElement('div');
@@ -9,7 +10,7 @@ function login(navigateTo) {
 
   const logo = document.createElement('img');
   logo.className = 'logoMobile';
-  logo.src = '/img/logo.png';
+  logo.src = imgLogo;
 
   const textWelcome = document.createElement('h3');
   textWelcome.className = 'textWelcome';
@@ -42,7 +43,7 @@ function login(navigateTo) {
   spanMessage.id = 'messageError';
 
   const btnLogin = document.createElement('button');
-  btnLogin.textContent = 'INICIAR SESIÓN';
+  btnLogin.textContent = 'Iniciar Sesión';
   btnLogin.type = 'submit';
   btnLogin.id = 'btnLogin';
 
@@ -65,11 +66,11 @@ function login(navigateTo) {
   btnGoogle.id = 'btnGoogle';
 
   const imgGoogle = document.createElement('img');
-  imgGoogle.src = '/img/logo_google.png';
+  imgGoogle.src = imgLogoGoogle;
   imgGoogle.className = 'imgGoogle';
 
   const txtGoogle = document.createElement('span');
-  txtGoogle.innerHTML = 'CONTINÚA CON GOOGLE';
+  txtGoogle.innerHTML = 'Continúa con Google';
   txtGoogle.id = 'continueWithGoogle';
 
   btnGoogle.append(imgGoogle, txtGoogle);
