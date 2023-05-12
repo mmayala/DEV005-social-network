@@ -6,7 +6,8 @@
 * [2. Proyecto CineMatch](#2-proyecto-cinematch)
 * [3. Historias de Usuario](#3-historias-de-usuario)
 * [4. Prototipos](#4-prototipos)
-* [5. Participantes](#5-participantes)
+* [5. Test de usabilidad](#5-tes-de-usabilidad)
+* [6. Participantes](#5-participantes)
 
 ## 1. Preámbulo
 
@@ -54,9 +55,19 @@ Esta interfaz se puede usar desde cualquier dispositivo.
 ![Botones editar y eliminar](./src/img/edita_eliminar.png)
 ![Vista botón guardar cambios](./src/img/guardar_cambios.png)
 
+## 6. Test de usabilidad
+
+- Modificamos el fondo de la interfaz de register y login.
+- Pusimos transparencia en la parte de atrás de los input.
+- Se agregaron labels.
+- Se cambió el color de las letras de los labels.
+- En los botones secundarios se intercabió los colores.
+- Se cambió a minúscula los textos de los botones.
+
 ## 5. Participantes
 - [Laura Montero](https://github.com/LauraCMonteroM)
 - [Martha Ayala](https://github.com/mmayala)
 - [Mariel Figueroa](https://github.com/marielfico)
+
 
 
