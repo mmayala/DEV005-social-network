@@ -5,6 +5,7 @@ import
 {
   deletePost, getPost, updatePost, like, dislike,
 } from '../firestore.js';
+import { imgLogoPost } from './imagenes.js';
 
 let editStatus = false;
 let id = '';
@@ -17,14 +18,14 @@ function wall() {
   const navWall = document.createElement('nav');
   navWall.id = 'navWall';
   const signOutBtn = document.createElement('button');
-  signOutBtn.textContent = 'CERRAR SESIÓN';
+  signOutBtn.textContent = 'Cerrar Sesión';
   signOutBtn.id = 'signOutBtn';
   const cineMatchtitle = document.createElement('h1');
   cineMatchtitle.textContent = 'CINE MATCH';
   cineMatchtitle.id = 'titleWall';
   const logo = document.createElement('img');
   logo.className = 'logoWall';
-  logo.src = '/img/logo.png';
+  logo.src = imgLogoPost;
   navWall.append(logo, cineMatchtitle, signOutBtn);
   const sectionWall = document.createElement('section');
   const divCreatePost = document.createElement('div');
@@ -35,7 +36,7 @@ function wall() {
   txtPost.placeholder = 'Escribe aquí el comentario sobre la película';
   txtPost.id = 'textPost';
   const buttonPost = document.createElement('button');
-  buttonPost.textContent = 'PUBLICAR';
+  buttonPost.textContent = 'Publicar';
   buttonPost.id = 'buttonPost';
   const postSection = document.createElement('article');
   postSection.className = 'postArticle';
@@ -65,16 +66,16 @@ function wall() {
       textArea.style.display = 'none';
       const btnEdit = document.createElement('button');
       btnEdit.className = 'btnEdit';
-      btnEdit.textContent = 'EDITAR';
+      btnEdit.textContent = 'Editar';
       btnEdit.setAttribute('data-id', `${doc.id}`);
       const btnSave = document.createElement('button');
       btnSave.className = 'btnSave';
-      btnSave.textContent = 'GUARDAR CAMBIOS';
+      btnSave.textContent = 'Guardar Cambios';
       btnSave.style.display = 'none';
       btnSave.setAttribute('data-id', `${doc.id}`);
       const btnDelet = document.createElement('button');
       btnDelet.className = 'btnDelet';
-      btnDelet.textContent = 'ELIMINAR';
+      btnDelet.textContent = 'Eliminar';
       btnDelet.setAttribute('data-id', `${doc.id}`);
 
       const likes = document.createElement('i');

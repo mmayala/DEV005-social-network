@@ -8,6 +8,20 @@ import login from '../src/components/login.js';
 import wall from '../src/components/muro.js';
 import { deletePost } from '../src/firestore.js';
 
+jest.mock('../src/components/imagenes.js', () => ({
+  imgLogo: '',
+  imgLogoGoogle: '',
+  imgLogoPost: '',
+}));
+
+test('Have a button', () => {
+  document.body.innerHTML = '<div id="root"></div>';
+  const DOM = document.getElementById('root');
+  DOM.append(register());
+  const haveabutton = document.getElementById('btn-Register');
+  expect(haveabutton).not.toBe(null);
+});
+
 // Testea va al muro cuando se inicia sesión con Google
 describe('Button Googlee', () => {
   test('login with google call function navigateTo', () => {
@@ -20,7 +34,6 @@ describe('Button Googlee', () => {
   });
 });
 
-// Test funcion register
 describe('register', () => {
   test('it should be a function', () => {
     expect(typeof register).toBe('function');

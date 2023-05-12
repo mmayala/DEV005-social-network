@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase.js';
+import { imgLogo } from './imagenes.js';
 
 function register(navigateTo) {
   const divRegister = document.createElement('div');
@@ -10,7 +11,7 @@ function register(navigateTo) {
 
   const logo = document.createElement('img');
   logo.className = 'logoMobile';
-  logo.src = '/img/logo.png';
+  logo.src = imgLogo;
 
   const textWelcome = document.createElement('h3');
   textWelcome.className = 'textWelcome';
@@ -71,7 +72,7 @@ function register(navigateTo) {
   returnLogin.appendChild(registerLink);
 
   const btnRegister = document.createElement('button');
-  btnRegister.textContent = 'REGISTRARSE';
+  btnRegister.textContent = 'Registrarse';
   btnRegister.type = 'submit';
   btnRegister.id = 'btn-Register';
 
