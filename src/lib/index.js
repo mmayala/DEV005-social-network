@@ -1,4 +1,3 @@
-// aqui exportaras las funciones que necesites
 import {
   db, getDocs, collection, addDoc, onSnapshot,
 } from '../firestore';
