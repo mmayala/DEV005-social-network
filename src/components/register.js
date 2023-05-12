@@ -90,6 +90,7 @@ function register(navigateTo) {
   );
   sectionDatos.append(formRegister);
   divRegister.append(sectionLogo, sectionDatos);
+
   // Evento para regresar a la vista principal login
   const backreturn = divRegister.querySelector('a');
   backreturn.addEventListener('click', () => {
@@ -97,26 +98,18 @@ function register(navigateTo) {
   });
 
   const signupForm = divRegister.querySelector('#register_form');
-  // console.log(signupForm);
   signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    // const nameInput = signupForm.register_name.value;
     const emailInput = signupForm.register_email.value;
     const passwordInput = signupForm.register_password.value;
-    // const confirmPassInput = signupForm.register_confirm.value;
-    // console.log(nameInput, emailInput, passwordInput, confirmPassInput);
     try {
-      // const userCredentials =
       await createUserWithEmailAndPassword(
         auth,
         emailInput,
         passwordInput,
       );
       navigateTo('/muro');
-      // console.log(userCredentials);
     } catch (error) {
-      //  console.log(error.message);
-      //  console.log(error.code);
       if (error.code === 'auth/email-already-in-use') {
         spanMessage.textContent = 'El correo ya está registrado';
       } else if (error.code === 'auth/invalid-email') {

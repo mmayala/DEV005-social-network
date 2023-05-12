@@ -12,11 +12,9 @@ export async function signInWithCredentials(emailLogin, passwordLogin) {
   let message = 'Algo va mal';
   try {
     await signInWithEmailAndPassword(auth, emailLogin, passwordLogin);
-    // console.log(credentials);
     message = 'Has iniciado sesión correctamente';
     result = true;
   } catch (error) {
-    // console.log(error.code);
     if (error.code === 'auth/wrong-password') {
       message = 'La contraseña que ingresaste es incorrecta';
     } else if (error.code === 'auth/user-not-found') {

@@ -52,7 +52,7 @@ function login(navigateTo) {
 
   const registerLink = document.createElement('a');
   registerLink.className = 'link';
-  registerLink.innerHTML = 'Registrate aquí';
+  registerLink.innerHTML = 'Regístrate aquí';
   registerLink.href = '';
   register.appendChild(registerLink);
 
@@ -95,11 +95,9 @@ function login(navigateTo) {
 
   // Logearse con Google
   const googleBtn = divLogin.querySelector('.btnGoogle');
-  // console.log(googleBtn);
   googleBtn.addEventListener('click', async () => {
     try {
       const credentials = await signIn();
-      // console.log(credentials);
       navigateTo('/muro');
       // eslint-disable-next-line no-alert
       alert(`Bienvenido ${credentials.user.displayName}`);
