@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 // import { signOut } from 'firebase/auth';
-=======
-import { signOut } from 'firebase/auth';
->>>>>>> 73d26a0bcffe4cd04e0391ab4432cb5ce86489ed
 import { auth } from '../firebase.js';
 import { addPost, paintRealTime } from '../lib/index';
 import
@@ -122,10 +118,6 @@ function wall() {
         txtArea.style.display = 'block';
         editStatus = true;
         id = e.target.dataset.id;
-<<<<<<< HEAD
-=======
-
->>>>>>> 73d26a0bcffe4cd04e0391ab4432cb5ce86489ed
         // const txtArea = postSection.querySelector('.textAreaEdit');
         btnSaveEdit.addEventListener('click', () => {
           const comment = txtArea.value;

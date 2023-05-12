@@ -3,12 +3,11 @@
  */
 
 import { collection } from 'firebase/firestore';
-import { collection } from 'firebase/firestore';
 import wall from '../src/components/muro.js';
 import { deletePost } from '../src/firestore.js';
-import { auth } from '../src/firebase.js';
-import wall from '../src/components/muro.js';
-import { deletePost } from '../src/firestore.js';
+import register from '../src/components/register.js';
+import login from '../src/components/login.js';
+
 // import { auth } from '../src/firebase.js';
 
 // const mockRegister = () => {
