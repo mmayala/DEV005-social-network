@@ -71,7 +71,8 @@ function wall() {
       const btnSave = document.createElement('button');
       btnSave.className = 'btnSave';
       btnSave.textContent = 'Guardar Cambios';
-      btnSave.style.display = 'none';
+      btnSave.style.position = 'absolute';
+      btnSave.style.visibility = 'hidden';
       btnSave.setAttribute('data-id', `${doc.id}`);
       const btnDelet = document.createElement('button');
       btnDelet.className = 'btnDelet';
@@ -115,7 +116,8 @@ function wall() {
         const btnEditTxt = postSection.querySelector(`.btnEdit[data-id="${doc.id}"]`);
         const post = doc.data();
         btnEditTxt.style.display = 'none';
-        btnSaveEdit.style.display = 'block';
+        btnSaveEdit.style.visibility = 'visible';
+        btnSaveEdit.style.position = 'relative';
         paragraphPost.style.display = 'none';
         txtArea.value = post.comment;
         txtArea.style.display = 'block';

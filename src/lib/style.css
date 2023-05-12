@@ -128,113 +128,147 @@ html {
   background-color: #A31721;
   height: 6vw;
   width: 100%;
-  padding: 0 10%;
+  padding: 0 20%;
 }
 
 #signOutBtn {
-  height: 50%;
-  width: 150px;
-  font-size: 15px;
+  width: 8vw;
+  font-size: 1vw;
   margin-left: auto;
   background-color: #29193E;
   color: white;
   font-weight: bold;
   border-radius: 15px;
   border: none;
+  padding: 5px;
 }
 
 #titleWall{
-  font-size: 50px;
+  font-size: 3vw;
   font-family: 'Times New Roman', Times, serif;
 }
 
 .logoWall{
   height: 80%;
 }
-
-.postArticle {
-  display: flex;
-  padding: 2.5em 20em;
-  min-width: 500px;
-  text-align: end;
-  flex-direction: column;
-}
-
+ 
 .toCreatePost {
   display: flex;
-  padding: 2.5em;
+  padding: 3em 16.5em 0 17.5em;
   text-align: center;
   flex-direction: column;
 }
 
-#buttonPost{
-  width: 20%;
-  height: 3em;
-  border: none;
+.postArticle {
+  display: grid;
+  margin: 2em 14em 0 15em;
+  padding: 2.5em;
+  text-align: end;
+  align-items: stretch;
+  justify-content: center;
+}
+
+
+.createdPost {
+  min-width: 100px;
+  margin-bottom: 35px;
+  padding: 15px;
   border-radius: 15px;
-  margin-top: 1em;
+  border: 1px solid #29193e78;
+  background: #f5deb35c;
+}
+
+#buttonPost {
+  width: 8vw;
+  font-size: 1vw;
+  margin-left: auto;
   background-color: #29193E;
   color: white;
   font-weight: bold;
-  margin-bottom: 20px;
-  margin-left: 80%;
+  border-radius: 15px;
+  border: none;
+  padding: 5px;
 }
 
-.btnlikes{
-display: inline-flex;
-margin: 5px;
-justify-content: left ;
-color: #A31721;
-}
-
-.cantLikes{
+.btnlikes {
   display: inline-flex;
-margin: 5px;
-justify-content: left ;
-color: #29193E;
+  justify-content: left;
+  color: #A31721;
+  font-size: 15px;
 }
 
-.btnEdit, .btnSave {
-  width: 20%;
-  height: 3em;
-  border: none;
-  border-radius: 15px;
-  margin-top: 1em;
+.cantLikes {
+  display: inline-flex;
+  margin: 5px;
+  justify-content: left;
+  color: #29193E;
+  margin-right: 23px;
+  font-weight: bold;
+}
+
+.btnEdit {
+  width: 8vw;
+  font-size: 1vw;
+  margin-left: auto;
   background-color: #29193E;
   color: white;
   font-weight: bold;
-  margin-bottom: 20px;
-  margin-left: 10px;
+  border-radius: 15px;
+  border: none;
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.btnSave {
+  width: 12vw;
+  font-size: 1vw;
+  margin-left: auto;
+  background-color: #29193E;
+  color: white;
+  font-weight: bold;
+  border-radius: 15px;
+  border: none;
+  padding: 5px;
 }
 
 .btnDelet{
-  align-items: center;
-  justify-content: space-around;
+  width: 8vw;
+  font-size: 1vw;
+  margin-left: auto;
   background-color: white;
-  color: rgb(41, 25, 62);
+  color: #29193E;
   font-weight: bold;
   border-radius: 15px;
-  width: 20%;
-  height: 3em;
   border: none;
+  padding: 5px;
+  margin-top: 10px;
 }
 
 .comment {
   width: 100%;
-  background-color: gray;
+  background-color: rgb(41 25 62 / 27%);
   margin-bottom: 15px;
   padding: 15px;
   border-radius: 15px;
   text-align: initial;
 }
-#textPost,
+
+#textPost  {
+  width: 100%;
+  height: 64px;
+  resize: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 0 rgba(161, 155, 155, .5);
+  padding: 15px;
+}
+
 .textAreaEdit{
   width: 100%;
   height: 100px;
   resize: none;
   border-radius: 15px;
-  box-shadow:  0 5px 0 rgb(161, 155, 155);
-  padding: 1%;
+  box-shadow: 0 5px 0 rgba(161, 155, 155, .5);
+  padding: 15px;
 }
 
 @media only screen and (orientation: portrait) {
@@ -284,25 +318,53 @@ color: #29193E;
 
 /*wall*/
 #wallContainer {
-  min-height: auto;
   background-size: cover;
 }
 
 #navWall {
   height: 6vh;
+  padding: 0 10%
 }
 
 #titleWall{
-  font-size: 20px;
+  font-size: 5vw;
+}
+
+#signOutBtn {
+  width: 23vw;
+  font-size: 3vw;
 }
 
 #sectionWall{
   padding: 2.5em;
   min-width: 350px;
 }
+
 .postArticle {
-  padding: 1em;
   min-width: 300px;
+  margin: 1em;
+  padding: 1.5em;
+}
+
+.toCreatePost {
+  padding: 2.5em 2.5em 0 2.5em;
+}
+
+#textPost  {
+  height: 64px;
+}
+
+.btnDelet, .btnEdit, .btnSave, #buttonPost{
+  width: 23vw;
+  font-size: 3vw;
+}
+
+.createdPost {
+  min-width: 100px;
   margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 15px;
+  border: 1px solid #29193e78;
+  background: #f5deb38c;
 }
 }
