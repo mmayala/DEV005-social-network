@@ -20,11 +20,11 @@ test('Have a button', () => {
   expect(haveabutton).not.toBe(null);
 });
 
+// Testea va al muro cuando se inicia sesión con Google
 describe('Button Googlee', () => {
   test('login with google call function navigateTo', () => {
     const DOM = document.createElement('div');
     const navigateTo = jest.fn();
-
     DOM.append(login(navigateTo('/muro')));
     const googleButton = DOM.querySelector('.btnGoogle');
     googleButton.click();
@@ -36,6 +36,8 @@ describe('register', () => {
   test('it should be a function', () => {
     expect(typeof register).toBe('function');
   });
+
+  // Testea si cuando se da click en link vuelve a Iniciar Sesión
   test('going to login page', () => {
     const navigateTo = jest.fn();
     const divContainer = register(navigateTo);

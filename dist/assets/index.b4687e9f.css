@@ -20,7 +20,7 @@ html {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  background-image: url(/img/fondo_desktop.png);
+  background-image: url(/assets/fondo_desktop.4b37beed.png);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -116,7 +116,7 @@ html {
 
 /*Wall*/
 #wallContainer {
-  background-image: url(/img/fondo_wall.png);
+  background-image: url(/assets/fondo_wall.21d8ae40.png);
   background-repeat: repeat;
   min-height: 100vh;
 }
@@ -197,16 +197,6 @@ html {
   font-size: 15px;
 }
 
-<<<<<<< HEAD
-
-
-.btnEdit, .btnSave {
-  width: 20%;
-  height: 3em;
-  border: none;
-  border-radius: 15px;
-  margin-top: 1em;
-=======
 .cantLikes {
   display: inline-flex;
   margin: 5px;
@@ -220,7 +210,6 @@ html {
   width: 8vw;
   font-size: 1vw;
   margin-left: auto;
->>>>>>> 816089c5520ca530a4abd53b50f438d197bc7898
   background-color: #29193E;
   color: white;
   font-weight: bold;
@@ -284,7 +273,7 @@ html {
 
 @media only screen and (orientation: portrait) {
   #loginContainer{
-  background-image: url(/img/fondo_mobile.png);
+  background-image: url(/assets/fondo_mobile.405122ca.png);
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;

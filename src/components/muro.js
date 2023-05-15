@@ -71,7 +71,8 @@ function wall() {
       const btnSave = document.createElement('button');
       btnSave.className = 'btnSave';
       btnSave.textContent = 'Guardar Cambios';
-      btnSave.style.display = 'none';
+      btnSave.style.position = 'absolute';
+      btnSave.style.visibility = 'hidden';
       btnSave.setAttribute('data-id', `${doc.id}`);
       const btnDelet = document.createElement('button');
       btnDelet.className = 'btnDelet';
@@ -94,6 +95,7 @@ function wall() {
       post.append(postComment, textArea, likes, cantLikes, btnEdit, btnSave, btnDelet);
       postSection.append(post);
     });
+
     // Delete post
     const btnsDelete = postSection.querySelectorAll('.btnDelet');
     btnsDelete.forEach((btn) => {
@@ -101,6 +103,7 @@ function wall() {
         deletePost(e.target.dataset.id);
       });
     });
+
     // Edit Post
     const btnsEdit = postSection.querySelectorAll('.btnEdit');
 
@@ -113,13 +116,14 @@ function wall() {
         const btnEditTxt = postSection.querySelector(`.btnEdit[data-id="${doc.id}"]`);
         const post = doc.data();
         btnEditTxt.style.display = 'none';
-        btnSaveEdit.style.display = 'block';
+        btnSaveEdit.style.visibility = 'visible';
+        btnSaveEdit.style.position = 'relative';
         paragraphPost.style.display = 'none';
         txtArea.value = post.comment;
         txtArea.style.display = 'block';
         editStatus = true;
         id = e.target.dataset.id;
-        // const txtArea = postSection.querySelector('.textAreaEdit');
+
         btnSaveEdit.addEventListener('click', () => {
           const comment = txtArea.value;
           if (!editStatus) {
@@ -131,6 +135,7 @@ function wall() {
         });
       });
     });
+
     // LIKES
     const btnslikes = postSection.querySelectorAll('.btnlikes');
 
