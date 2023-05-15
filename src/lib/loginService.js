@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase.js';
 

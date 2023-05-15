@@ -39,6 +39,7 @@ function register(navigateTo) {
   email.placeholder = 'ejemplo@ejemplo.com';
   email.type = 'email';
   email.id = 'register_email';
+  email.value = '';
 
   const labelPassword = document.createElement('label');
   labelPassword.textContent = 'Contraseña';
@@ -47,6 +48,7 @@ function register(navigateTo) {
   password.placeholder = '************';
   password.type = 'password';
   password.id = 'register_password';
+  password.value = '';
 
   const labelConfirm = document.createElement('label');
   labelConfirm.textContent = 'Confirmar contraseña';
@@ -89,6 +91,7 @@ function register(navigateTo) {
   );
   sectionDatos.append(formRegister);
   divRegister.append(sectionLogo, sectionDatos);
+
   // Evento para regresar a la vista principal login
   const backreturn = divRegister.querySelector('a');
   backreturn.addEventListener('click', () => {
