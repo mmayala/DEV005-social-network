@@ -5,6 +5,8 @@
 import { collection } from 'firebase/firestore';
 import wall from '../src/components/muro.js';
 import { deletePost } from '../src/firestore.js';
+import register from '../src/components/register.js';
+import login from '../src/components/login.js';
 
 jest.mock('../src/components/imagenes.js', () => ({
   imgLogo: '',

@@ -197,16 +197,6 @@ html {
   font-size: 15px;
 }
 
-<<<<<<< HEAD
-
-
-.btnEdit, .btnSave {
-  width: 20%;
-  height: 3em;
-  border: none;
-  border-radius: 15px;
-  margin-top: 1em;
-=======
 .cantLikes {
   display: inline-flex;
   margin: 5px;
@@ -220,7 +210,6 @@ html {
   width: 8vw;
   font-size: 1vw;
   margin-left: auto;
->>>>>>> 816089c5520ca530a4abd53b50f438d197bc7898
   background-color: #29193E;
   color: white;
   font-weight: bold;
